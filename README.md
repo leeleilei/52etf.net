@@ -17,3 +17,11 @@ Hugo静态网站生成
 2.  新建 Feat_xxx 分支
 3.  提交代码
 4.  新建 Pull Request
+
+#### TODO
+1. menu
+2. tags
+3. categroes
+4. logo
+5. favicon.ico
+6. sub-page

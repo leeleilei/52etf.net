@@ -10,7 +10,7 @@
 </head>
 <body>
 <header id="header">
-    {{- $image := resources.Get “images/logo.png -}}
+    {{- $image := resources.Get "images/logo.png" -}}
     <h1><a href="/">{{ .Site.Title }}</a></h1>
     {{ $image := $resource.Resize "60x" }}
     <nav>

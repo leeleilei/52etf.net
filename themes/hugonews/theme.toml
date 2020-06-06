@@ -1,0 +1,12 @@
+name = "hugonews"
+license = "GNU General Public License v2.0"
+licenselink = "https://www.gnu.org/licenses/old-licenses/gpl-2.0.html"
+description = "A hugo theme for a personal bookmarking website"
+homepage = "https://github.com/spaghettiwews/hugonews/"
+tags = ["bookmarking", "minimal", "clean"]
+features = ["lists", "bookmarking"]
+min_version = "0.57.0"
+
+[author]
+    name = "Welington Maposa"
+    homepage = "https://wews.co"

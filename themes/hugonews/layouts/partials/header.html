@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">  -->
+    <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
+    <title>{{ .Site.Title }}</title>
+</head>
+<body>
+<header id="header">
+    {{- $image := resources.Get “images/logo.png -}}
+    <h1><a href="/">{{ .Site.Title }}</a></h1>
+    {{ $image := $resource.Resize "60x" }}
+    <nav>
+        <ul>
+            <li><a href="/categories">目录</a></li>
+            <li><a href="/tags">云词</a></li>
+            <li><a href="/#">长赢策略</a></li>
+            <li><a href="/#">网格策略</a></li>
+            <li><a href="/#">精品基金</a></li>
+            <li><a href="/#">量化工具</a></li>
+            <li><a href="/#">经典书籍</a></li>
+            <li><a href="/#">大V著作</a></li>
+            
+            <li><a href="https://github.com/spaghettiwews/hugonews">github</a></li>
+        </ul>
+    </nav>
+</header>
+<main id="main">

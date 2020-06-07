@@ -10,20 +10,11 @@
 </head>
 <body>
 <header id="header">
-    {{- $image := resources.Get "images/logo.png" -}}
     <h1><a href="/">{{ .Site.Title }}</a></h1>
-    {{ $image := $resource.Resize "60x" }}
     <nav>
         <ul>
-            <li><a href="/categories">目录</a></li>
-            <li><a href="/tags">云词</a></li>
-            <li><a href="/#">长赢策略</a></li>
-            <li><a href="/#">网格策略</a></li>
-            <li><a href="/#">精品基金</a></li>
-            <li><a href="/#">量化工具</a></li>
-            <li><a href="/#">经典书籍</a></li>
-            <li><a href="/#">大V著作</a></li>
-            
+            <li><a href="/tags">tags</a></li>
+            <li><a href="/sites">sites</a></li>
             <li><a href="https://github.com/spaghettiwews/hugonews">github</a></li>
         </ul>
     </nav>

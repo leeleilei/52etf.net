@@ -19,9 +19,8 @@ Hugo静态网站生成
 4.  新建 Pull Request
 
 #### TODO
-1. menu
-2. tags
-3. categroes
-4. logo
-5. favicon.ico
-6. sub-page
+
+1.  CCTV 爬虫关键字
+2.  logo
+3.  favicon.ico
+4.  8. wechat scan

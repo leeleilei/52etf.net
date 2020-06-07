@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link id="favicon" rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
+    <link rel="stylesheet" href="{{ "css/syntax.css" | relURL }}">
+    <script src="https://kit.fontawesome.com/e60d7ffaae.js" crossorigin="anonymous"></script>
+     <title>{{ .Site.Title }}</title>
+</head>
+<body>
+<header id="header">
+    <h1><a href="/">{{ .Site.Title }}</a></h1>
+    <nav class="sidebar-nav">
+        {{ range .Site.Menus.main }}
+          <a href="{{ .URL }}" title="{{ .Title }}">
+            {{- .Pre -}}{{- .Name -}}
+            {{- with .Page -}}
+              <span class="date">
+              {{- dateFormat " (2006-01-02)" .Date -}}
+              </span>
+            {{- end -}}
+          </a> |
+        {{ end }}
+        </nav>
+
+</header>
+<main id="main">

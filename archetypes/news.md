@@ -2,7 +2,6 @@
 title: "{{ replace .Name "-" " " | title }}"
 date: {{ .Date }}
 itemurl: ""
-sites: ""
-tags: []
+tags: [要闻,]
 draft: false
 ---

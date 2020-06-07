@@ -30,10 +30,14 @@ menu:
     #pre: <i class="fa fa-user-circle-o" aria-hidden="true"></i>
     url: /about/
     weight: -80
+  - name: 博客
+    #pre: <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+    url: "https://btcz.im/"
+    weight: -90    
   - name: Tags
     #pre: <i class="fa fa-user-circle-o" aria-hidden="true"></i>
     url: /tags/
-    weight: -90
+    weight: -95
   - identifier: 'v'    
     name: 大V文集
     #pre: <i class="fa fa-sticky-note" aria-hidden="true"></i>
@@ -48,17 +52,17 @@ menu:
     #pre: <i class="fa fa-diamond" aria-hidden="true"></i>
     url: /funds/
     weight: -150
-  - name: 长盈策略
+  - name: 长赢策略
     #pre: <i class="fa fa-pie-chart" aria-hidden="true"></i>
     url: /policies/
     weight: -180
   - identifier: 'news'    
-    name: 经济要闻
+    name: 新闻内参
     #pre: <i class="fa fa-globe" aria-hidden="true"></i>
     url: /news/
     weight: -190
   - identifier: 'dash'
-    name: 仪表盘
+    name: 市场仪表盘
     #pre: <i class='fa fa-tachometer'></i>
     url: /dash/
     weight: -200

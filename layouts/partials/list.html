@@ -1,7 +1,7 @@
 {{ $start := add (sub (mul .Paginator.PageSize .Paginator.PageNumber) .Paginator.PageSize) 1 }}
 <ol start={{ $start }}>
     {{ range .Paginator.Pages }}
-    
+    {{ if not (isset .Params "blog") }} <!-- 首页上屏蔽掉blog内容，section内不屏蔽-->
     <li class="item">
             <span class="item__title"><a class="item__notes" href="{{ .Permalink }}">{{ .Title}}</a></span>
             {{ if (isset .Params "itemurl") }}
@@ -12,10 +12,8 @@
             {{- end }}]
             ,{{ partial "age.html" . }}
             <!-- todo: 月份和tag放在右侧 -->
-            {{ if ne (trim .Content " ") "" }}
-            <p class="item__siteurl">{{ .Summary }} ... ...</p>
-            {{ end}}
     </li>
+    {{ end }}
     {{ end }}
     </ol>
 {{ template "_internal/pagination.html" . }}

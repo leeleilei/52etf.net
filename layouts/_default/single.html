@@ -1,24 +1,25 @@
 {{ partial "header.html" . }}
 
-
-    <article class="single">
+    <article class="single markdown-body">
         {{ if (isset .Params "itemurl") }}
             <div class="original_link">
                 <p>标题: {{ .Params.Title }}</p>
                 <p>原文链接:<a href="{{ .Params.ItemUrl }}">{{ .Params.ItemUrl }}</a></p>
-            
         {{ end }}
+        <h1>{{ .Params.Title }}</h1>
         {{ if ne (trim .Content " ") "" }}
             <p>
-            {{ .Content }}
+            {{ .Content |emojify }}
             </p>
             </div>
         {{ end }}
 
-        <div class="alert">请您在评论时遵守网络条例。</div>
-        
     </article>
 
+
 {{ partial "related.html" . }}
-{{ partial "comment.html" . }}
+{{ if not (eq .Params.comment false) }}
+    {{ partial "comment.html" . }}
+{{ end }}
+
 {{ partial "footer.html" . }}

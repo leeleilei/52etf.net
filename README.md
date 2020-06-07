@@ -20,7 +20,8 @@ Hugo静态网站生成
 
 #### TODO
 
-1.  CCTV 爬虫关键字
-2.  logo
-3.  favicon.ico
-4.  8. wechat scan
+1.  wechat scan
+2.  req to modify
+3.  投稿--> gitee
+4.  编辑这篇文章
+5.  

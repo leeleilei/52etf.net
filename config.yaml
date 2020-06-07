@@ -48,18 +48,10 @@ menu:
     #pre: <i class="fa fa-diamond" aria-hidden="true"></i>
     url: /funds/
     weight: -150
-  - name: 网格交易
-    #pre: <i class="fa fa-th" aria-hidden="true"></i>
-    #url: /about/
-    weight: -160
   - name: 长盈策略
     #pre: <i class="fa fa-pie-chart" aria-hidden="true"></i>
-    #url: /about/
+    url: /policies/
     weight: -180
-  - name: 目标市值
-    #pre: <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
-    #url: /about/
-    weight: -170
   - identifier: 'news'    
     name: 经济要闻
     #pre: <i class="fa fa-globe" aria-hidden="true"></i>

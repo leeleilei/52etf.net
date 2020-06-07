@@ -3,17 +3,17 @@
     {{ range .Paginator.Pages }}
     
     <li class="item">
-            <span class="item__siteurl"><a class="item__notes" href="{{ .Permalink }}">{{ .Title}}</a></span>
+            <span class="item__title"><a class="item__notes" href="{{ .Permalink }}">{{ .Title}}</a></span>
             {{ if (isset .Params "itemurl") }}
             <span class="item__siteurl"><a href="{{ .Params.ItemUrl }}">[查看原文]</a></span> 
             {{ end }}
-            {{ range .Params.tags }}
+            [{{ range .Params.tags }}
             <a class="item__tag" href='/tags/{{- replace . " " "-" -}}'>#{{- . -}}</a>
-            {{- end }}
+            {{- end }}]
             ,{{ partial "age.html" . }}
             <!-- todo: 月份和tag放在右侧 -->
             {{ if ne (trim .Content " ") "" }}
-            <p>{{ .Summary }} ... ...</p>
+            <p class="item__siteurl">{{ .Summary }} ... ...</p>
             {{ end}}
     </li>
     {{ end }}

@@ -38,11 +38,6 @@ menu:
     #pre: <i class="fa fa-user-circle-o" aria-hidden="true"></i>
     url: /tags/
     weight: -95
-  - identifier: 'v'    
-    name: 大V文集
-    #pre: <i class="fa fa-sticky-note" aria-hidden="true"></i>
-    url: /v/
-    weight: -120
   - identifier: 'books'
     name: 投资书单
     #pre: <i class="fa fa-book" aria-hidden="true"></i>

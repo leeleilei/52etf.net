@@ -3,8 +3,8 @@
     <article class="single markdown-body">
         {{ if (isset .Params "itemurl") }}
             <div class="original_link">
-                <p>标题: {{ .Params.Title }}</p>
                 <p>原文链接:<a href="{{ .Params.ItemUrl }}">{{ .Params.ItemUrl }}</a></p>
+            </div>
         {{ end }}
         <h1>{{ .Params.Title }}</h1>
         {{ if ne (trim .Content " ") "" }}

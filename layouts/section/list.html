@@ -7,26 +7,8 @@
     {{.Content}}
 </article>
 
-{{ $start := add (sub (mul .Paginator.PageSize .Paginator.PageNumber) .Paginator.PageSize) 1 }}
-<ol start={{ $start }}>
-    {{ range .Paginator.Pages }}
-    
-    <li class="item">
-            <span class="item__title"><a class="item__notes" href="{{ .Permalink }}">{{ .Title}}</a></span>
-            {{ if (isset .Params "itemurl") }}
-            <span class="item__siteurl"><a href="{{ .Params.ItemUrl }}">[查看原文]</a></span> 
-            {{ end }}
-            
-            {{ if .Params.tags }}
-            [{{ range .Params.tags }}
-            <a class="item__tag" href='/tags/{{- replace . " " "-" -}}'>#{{- . -}}</a>
-            {{- end }}]
-            {{ end }}
-            ,{{ partial "age.html" . }}
-            <!-- todo: 月份和tag放在右侧 -->
-    </li>
-    {{ end }}
-    </ol>
+{{ partial "list.html" . }}
+
 {{ template "_internal/pagination.html" . }}
 
 {{ partial "footer.html" . }}

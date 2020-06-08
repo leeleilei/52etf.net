@@ -1,9 +1,7 @@
 {{ partial "header.html" . }}
 
     <article class="single markdown-body">
-        {{ if (isset .Params "itemurl") }}
 
-        {{ end }}
         <h1>{{ .Params.Title }}</h1>
         {{ if ne (trim .Content " ") "" }}
             <p>
@@ -11,9 +9,12 @@
             </p>
             </div>
         {{ end }}
+        
+        {{ if (isset .Params "itemurl") }}
         <div class="original_link">
             <p>链接:<a href="{{ .Params.ItemUrl }}">{{ .Params.ItemUrl }}</a></p>
-        </div>        
+        </div>   
+        {{ end }}
 
     </article>
 

@@ -12,11 +12,29 @@ body {
     padding: 0;
 }
 
-.item a,
+
 .item {
     margin-bottom: 0.6rem;
-    text-decoration: none;
+}
 
+.item a {
+    color: black;
+    text-decoration: none;
+}
+
+
+.item__title {
+    color: black;
+}
+
+a.item__tag {
+    color: lightseagreen;
+    font-size: 80%;
+}
+
+.age {
+    color: orange;
+    font-size: 60%;
 }
 
 p { 

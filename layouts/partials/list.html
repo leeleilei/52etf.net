@@ -3,9 +3,9 @@
     {{ range .Paginator.Pages }}
     {{ if not (isset .Params "blog") }} <!-- 首页上屏蔽掉blog内容，section内不屏蔽-->
     <li class="item">
-            <span class="item__title"><a class="item__notes" href="{{ .Permalink }}">{{ .Title}}</a></span>
+            <span class="item__title"><a class="item__notes" href="{{ .Params.ItemUrl }}">{{ .Title}}</a></span>
             {{ if (isset .Params "itemurl") }}
-            <span class="item__siteurl"><a href="{{ .Params.ItemUrl }}">[查看原文]</a></span> 
+            <span class="item__siteurl"><a href="{{ .Permalink }}">[评论]</a></span> 
             {{ end }}
             [{{ range .Params.tags }}
             <a class="item__tag" href='/tags/{{- replace . " " "-" -}}'>#{{- . -}}</a>

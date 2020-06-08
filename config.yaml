@@ -52,7 +52,7 @@ menu:
     url: /policies/
     weight: -180
   - identifier: 'news'    
-    name: 新闻内参
+    name: 文摘
     #pre: <i class="fa fa-globe" aria-hidden="true"></i>
     url: /news/
     weight: -190

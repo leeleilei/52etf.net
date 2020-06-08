@@ -1,19 +1,19 @@
 {{ $start := add (sub (mul .Paginator.PageSize .Paginator.PageNumber) .Paginator.PageSize) 1 }}
 <ol start={{ $start }}>
     {{ range .Paginator.Pages }}
-    {{ if not (isset .Params "blog") }} <!-- 首页上屏蔽掉blog内容，section内不屏蔽-->
     <li class="item">
-            <span class="item__title"><a class="item__notes" href="{{ .Params.ItemUrl }}">{{ .Title}}</a></span>
-            {{ if (isset .Params "itemurl") }}
+        {{ if (isset .Params "itemurl") }}
+            <span class="item__title"><a class="item__title" href="{{ .Params.ItemUrl }}">{{ .Title}}</a></span>
             <span class="item__siteurl"><a href="{{ .Permalink }}">[评论]</a></span> 
-            {{ end }}
+        {{ else }}
+            <span class="item__title"><a class="item__title" href="{{ .Permalink }}">{{ .Title}}</a></span>
+        {{ end }}
             [{{ range .Params.tags }}
             <a class="item__tag" href='/tags/{{- replace . " " "-" | urlize -}}'>#{{- . -}}</a>
             {{- end }}]
             ,{{ partial "age.html" . }}
             <!-- todo: 月份和tag放在右侧 -->
     </li>
-    {{ end }}
     {{ end }}
     </ol>
 {{ template "_internal/pagination.html" . }}

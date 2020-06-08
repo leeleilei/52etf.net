@@ -8,7 +8,7 @@
             <span class="item__siteurl"><a href="{{ .Permalink }}">[评论]</a></span> 
             {{ end }}
             [{{ range .Params.tags }}
-            <a class="item__tag" href='/tags/{{- replace . " " "-" -}}'>#{{- . -}}</a>
+            <a class="item__tag" href='/tags/{{- replace . " " "-" | urlize -}}'>#{{- . -}}</a>
             {{- end }}]
             ,{{ partial "age.html" . }}
             <!-- todo: 月份和tag放在右侧 -->

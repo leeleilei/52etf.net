@@ -6,16 +6,23 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link id="favicon" rel="icon" type="image/x-icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/4.0.0/github-markdown.min.css">
+    <link rel="stylesheet" href="{{ "css/github-markdown.min.css" | relURL }}">
     <link rel="stylesheet" href="{{ "css/addon.css" | relURL }}">
-    <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css?family=Roboto|Noto+Sans+SC">
     <style>
+    @font-face{
+      font-family: "NotoSansSC";
+      src : url('{{ "css/NotoSansSC-Thin.ttf" }}');
+    }
+
+    @font-face{
+      font-family: 'Roboto';
+      src : url('{{ "css/Roboto-Regular.ttf" }}');
+    }
+
     * {
-      font-family: 'Roboto', 'Noto Sans SC Thin' !important;
+      font-family: 'Roboto', 'NotoSansSC' !important;
     }
     </style>
-    <script src="https://kit.fontawesome.com/e60d7ffaae.js" crossorigin="anonymous"></script>
      <title>{{ .Site.Title }}</title>
 </head>
 <body>

@@ -42,11 +42,11 @@ menu:
     name: 书单
     #pre: <i class="fa fa-book" aria-hidden="true"></i>
     url: /books/
-    weight: -140
+    weight: -150
   - name: 精品基金
     #pre: <i class="fa fa-diamond" aria-hidden="true"></i>
     url: /funds/
-    weight: -150
+    weight: -140
   - name: 长赢
     #pre: <i class="fa fa-pie-chart" aria-hidden="true"></i>
     url: /policies/

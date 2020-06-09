@@ -39,7 +39,7 @@ menu:
     url: /tags/
     weight: -95
   - identifier: 'books'
-    name: 投资书单
+    name: 书单
     #pre: <i class="fa fa-book" aria-hidden="true"></i>
     url: /books/
     weight: -140
@@ -47,7 +47,7 @@ menu:
     #pre: <i class="fa fa-diamond" aria-hidden="true"></i>
     url: /funds/
     weight: -150
-  - name: 长赢策略
+  - name: 长赢
     #pre: <i class="fa fa-pie-chart" aria-hidden="true"></i>
     url: /policies/
     weight: -180
@@ -57,7 +57,7 @@ menu:
     url: /news/
     weight: -190
   - identifier: 'dash'
-    name: 市场仪表盘
+    name: 仪表盘
     #pre: <i class='fa fa-tachometer'></i>
     url: /dash/
     weight: -200

@@ -27,6 +27,10 @@ body {
     color: black;
 }
 
+a.item__siteurl {
+    color: blue;
+}
+
 a.item__tag {
     color: lightseagreen;
     font-size: 80%;

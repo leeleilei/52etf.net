@@ -3,6 +3,7 @@
     <article class="single markdown-body">
 
         <h1>{{ .Params.Title }}</h1>
+
         {{ if ne (trim .Content " ") "" }}
             <p>
             {{ .Content |emojify }}
@@ -16,12 +17,18 @@
         </div>   
         {{ end }}
 
+        
+        <hr />
+        <strong>文章分类：</strong>
+        {{ range .Params.tags }}
+        <a class="item__tag" href='/tags/{{- replace . " " "-" | urlize -}}'>#{{- . -}}</a>
+        {{ end }}
     </article>
 
+    {{ partial "related.html" . }}
 
-{{ partial "related.html" . }}
-{{ if not (eq .Params.comment false) }}
-    {{ partial "comment.html" . }}
-{{ end }}
+    {{ if not (eq .Params.comment false) }}
+        {{ partial "comment.html" . }}
+    {{ end }}
 
-{{ partial "footer.html" . }}
+    {{ partial "footer.html" . }}

@@ -3,6 +3,7 @@ languageCode: "zh-cn"
 title: "我爱ETF"
 theme: "hugonews"
 
+paginate: 50
 
 permalinks:
   /: /:year/:month/:section/:filename/
@@ -32,7 +33,7 @@ menu:
     weight: -80
   - name: 博客
     #pre: <i class="fa fa-user-circle-o" aria-hidden="true"></i>
-    url: "https://btcz.im/"
+    url: "/blog/"
     weight: -90    
   - name: Tags
     #pre: <i class="fa fa-user-circle-o" aria-hidden="true"></i>

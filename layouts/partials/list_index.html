@@ -1,6 +1,7 @@
 {{ $start := add (sub (mul .Paginator.PageSize .Paginator.PageNumber) .Paginator.PageSize) 1 }}
 <ol start={{ $start }}>
     {{ range .Paginator.Pages }}
+    {{ if not (eq .Params.blog true) }}
 
     <li class="item">
         {{ if (isset .Params "itemurl") }}
@@ -15,6 +16,7 @@
             ,{{ partial "age.html" . }}
             <!-- todo: 月份和tag放在右侧 -->
     </li>
+    {{ end }}
     {{ end }}
     </ol>
 {{ template "_internal/pagination.html" . }}

@@ -40,6 +40,13 @@ a.item__tag {
     font-size: 80%;
     background-color: gray;
     padding: 2px;
+    text-decoration: none;
+}
+
+li.item__tag {
+    display: inline-block;
+    padding: 2px;
+    margin: 2px;
 }
 
 .age {

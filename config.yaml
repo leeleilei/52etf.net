@@ -3,6 +3,11 @@ languageCode: "zh-cn"
 title: "我爱ETF"
 theme: "hugonews"
 
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+
 paginate: 50
 
 permalinks:

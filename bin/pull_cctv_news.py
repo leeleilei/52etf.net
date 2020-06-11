@@ -25,12 +25,6 @@ news = pro.cctv_news(date=yesterday.replace('-',''))
 #title
 title = 'CCTV新闻联播摘要{date}'.format(date=yesterday)
 
-# keywords
-text = ''.join(news.iloc[:,2].to_list())
-keywords = jiagu.keywords(text, 7) # 关键词
-keywords = [x for x in keywords if len(x)>=2]
-keywords = ','.join(keywords)
-
 #content
 import jiagu
 reports = []
@@ -38,17 +32,30 @@ for text in news.iloc[:,2].to_list():
     reports.append(''.join(jiagu.summarize(text,2)))
 content = '\r\n\r\n'.join(reports)
 
+
+# keywords
+text = ''.join(news.iloc[:,2].to_list())
+text_keywords = jiagu.keywords(text, 7) # 关键词
+text_keywords = [x for x in text_keywords if len(x)>=2]
+
+# extend the keywords
+eco_keywords = []
+for k in KEYS:
+    if k in content:
+        eco_keywords.append(k)
+
+
 #黑体强调关键字
-keys = keywords.split(',')
-for k in keys:
+for k in text_keywords:
     content = content.replace(k, '<span style="border-bottom:4px solid #E32636;">'+k+'</span>')
 
-for k in KEYS:
+for k in eco_keywords:
     content = content.replace(k, '<span style="border-bottom:4px solid orange;">'+k+'</span>')
 
+text_keywords.extend(eco_keywords)
+keywords = ','.join(text_keywords)
 
 tpl = '''
-
 ---
 title: {title}
 date: {date}

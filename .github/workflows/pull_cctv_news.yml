@@ -34,12 +34,12 @@ jobs:
         # stop the build if there are Python syntax errors or undefined names
         python3 bin/pull_cctv_news.py 'content/news/'
 
-    - name: Commit changes
-      uses: EndBug/add-and-commit@v4
+    - uses: EndBug/add-and-commit@v4
       with:
+        add: '.'
+        force: true
         author_name: 52etf.net
         author_email: admin@52etf.net
         message: "日更一卒"
-        add: "/content/news/"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

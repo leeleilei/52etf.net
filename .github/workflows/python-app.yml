@@ -30,7 +30,7 @@ jobs:
     - name: pull yesterday cctv news
       run: |
         # stop the build if there are Python syntax errors or undefined names
-        python3 /bin/pull_cctv_news.py 'content/news/'
+        python3 bin/pull_cctv_news.py 'content/news/'
 
     - name: Commit changes
       uses: EndBug/add-and-commit@v4

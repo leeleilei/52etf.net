@@ -34,6 +34,17 @@ jobs:
           # stop the build if there are Python syntax errors or undefined names
           python3 bin/pull_cctv_news.py 'content/news/'
 
+
+      - uses: EndBug/add-and-commit@v4
+        with:
+          add: '.'
+          force: true
+          author_name: 52etf.net
+          author_email: admin@52etf.net
+          message: "日更一卒"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - uses: actions/checkout@v2
         with:
           submodules: true  # Fetch Hugo themes (true OR recursive)
@@ -54,13 +65,3 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           PUBLISH_BRANCH: gh-pages
           publish_dir: ./public
-
-      - uses: EndBug/add-and-commit@v4
-        with:
-          add: '.'
-          force: true
-          author_name: 52etf.net
-          author_email: admin@52etf.net
-          message: "日更一卒"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

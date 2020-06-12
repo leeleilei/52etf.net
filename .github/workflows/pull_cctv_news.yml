@@ -34,7 +34,27 @@ jobs:
       run: |
         # stop the build if there are Python syntax errors or undefined names
         python3 bin/pull_cctv_news.py 'content/news/'
-        hugo
+
+    - uses: actions/checkout@v2
+        with:
+          submodules: true  # Fetch Hugo themes (true OR recursive)
+          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: '0.71.1'
+          # extended: true
+
+      - name: Build
+        run: hugo --minify
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+
     - uses: EndBug/add-and-commit@v4
       with:
         add: '.'

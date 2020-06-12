@@ -193,13 +193,27 @@ gh-pages是action模板里的配置，需要切换到对应gh-pages分支
 为了避免本地文件污染，同步前git reset先自毁本地更新
 
 ```
-*/1 * * * * cd /home/ali/52etf;git checkout gh-pages;git fetch --all;git reset --hard origin/master;git pull
+*/1 * * * * cd /home/ali/52etf;git checkout gh-pages;git fetch --all;git reset --hard origin/gh-pages;git pull
+```
+
+本地docker服务，nginx映射52etf的目录（对应远端git分支gh-pages内容）
+```
+docker run --name 52etf-nginx -p 80:80 -v /home/ali/52etf/:/usr/share/nginx/html:ro -d nginx
 ```
 
 ## 尾声
 
 用Github提供的Action服务，可以一条龙编译部署新闻联播采集脚本。远端服务器只需要同步编译后的内容即可。
 
-现在发现静态网站返璞归真，无论效率、SEO还是内容管理上都很有优势。
+静态网站返璞归真，无论效率、SEO还是内容管理上都很有优势。如果采用动态后台Python开发，甚至现在流行的前端React开发，都达不到这个效果。React更多用在前端存在交互频繁的网页甚至小型app上比较占优势。
 
-如果采用动态后台Python开发，甚至现在流行的前端React开发，都达不到这个效果。每种技术都有一定局限性，挑选场景合适的工具才是最合适的方案。
+每种技术都有一定局限性，挑选场景合适的工具才是最合适的方案。
+
+可以是一种混合模式
+1. 后端Python FastApi
+2. 网站静态hugo
+3. 部分动态内容js来控制
+4. 对于单页面交互网页，或者复杂的交互应用用React
+5. 手机app可以用React（如果互动频繁）
+
+

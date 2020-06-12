@@ -47,7 +47,7 @@ draft: false
 
 if not news.empty:
     #title 昨日
-    title = 'CCTV新闻联播摘要{date}'.format(date=yesterday_str)
+    title = 'CCTV新闻联播摘要{date}'.format(date=today_str)
 
     #content
     import jiagu

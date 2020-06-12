@@ -4,12 +4,8 @@
 name: 更新新闻联播
 
 on:
-#  push:
-#    branches: [ master ]
-#  pull_request:
-#    branches: [ master ]
   schedule:
-    - cron: '*/3 * * * *'
+    - cron: "*/5 * * * *"
   watch:
     types: started      
 

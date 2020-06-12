@@ -52,7 +52,7 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          PUBLISH_BRANCH: master
+          PUBLISH_BRANCH: gh-pages
           publish_dir: ./public
 
       - uses: EndBug/add-and-commit@v4

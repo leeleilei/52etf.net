@@ -153,9 +153,63 @@ article p {
     letter-spacing: 0.1em;
     line-height: 1.75em;
 }
-div#comment {
-    padding-left: 1em;
-    padding-right: 1em;
+
+#vcomments {
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+#vcomments .vwrap {
+    border: 5px solid #dedede;
+}
+
+#vcomments .vheader .vnick {
+
+    padding-left: 2px;
+    padding-right: 2px;
+    border-radius: 5px
+}
+
+#vcomments .vheader .vmail {
+
+    padding-left: 2px;
+    padding-right: 2px;
+    border-radius: 5px
+}
+
+#vcomments .vheader .vlink {
+    padding-left: 2px;
+    padding-right: 2px;
+    border-radius: 5px
+}
+
+#vcomments .vcards .vcard {
+	padding: 15px 20px 0 20px;
+	border-radius: 10px;
+	margin-bottom: 15px;
+	box-shadow: 0 0 4px 1px rgba(0, 0, 0, .12);
+	transition: all .3s
+}
+ 
+#vcomments .vcards .vcard:hover {
+	box-shadow: 0 0 8px 3px rgba(0, 0, 0, .12)
+}
+ 
+#vcomments .vcards .vcard .vh .vcard {
+	border: none;
+	box-shadow: none;
+}
+
+img.vimg {
+    transition: all 1s   /* 旋转时间为 1s */
+}
+
+img.vimg:hover {
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
 }
 
 

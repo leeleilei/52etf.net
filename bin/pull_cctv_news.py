@@ -21,17 +21,17 @@ try:
 except IndexError:
     yesterday = datetime.today() - timedelta(days=1)
     yesterday = china_tz.localize(yesterday)
-    yesterday_str = yesterday.strftime('%Y%m%d')
+    yesterday_str = yesterday.strftime('%Y-%m-%d')
 
 today = datetime.today()
 today = china_tz.localize(today)
-today_str = today.strftime('%Y%m%d')
+today_str = today.strftime('%Y-%m-%d')
 #init tushare
 import tushare as ts
 TOKEN = '2ecdcdc049841ad3c28d13653925f79d41da86fe73dd49f5897f1ec4'
 ts.set_token(TOKEN)
 pro = ts.pro_api()
-news = pro.cctv_news(date=today_str)
+news = pro.cctv_news(date=today_str.replace('-',''))
 
 
 tpl = '''
@@ -48,7 +48,7 @@ draft: false
 if not news.empty:
     #title 昨日
     title = 'CCTV新闻联播摘要{date}'.format(date=today_str)
-
+    updated_at = today().isoformat()
     #content
     import jiagu
     # reports = []
@@ -85,7 +85,7 @@ if not news.empty:
     # 更新日期是今日
     md = tpl.format(
         title=title,
-        date=today_str,
+        date=updated_at,
         keywords=keywords,
         content=content
     )

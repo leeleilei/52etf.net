@@ -25,14 +25,13 @@ except IndexError:
 
 today = datetime.today()
 today = china_tz.localize(today)
-today_str = today.isoformat()
-
+today_str = today.strftime('%Y%m%d')
 #init tushare
 import tushare as ts
 TOKEN = '2ecdcdc049841ad3c28d13653925f79d41da86fe73dd49f5897f1ec4'
 ts.set_token(TOKEN)
 pro = ts.pro_api()
-news = pro.cctv_news(date=yesterday_str)
+news = pro.cctv_news(date=today_str)
 
 
 tpl = '''

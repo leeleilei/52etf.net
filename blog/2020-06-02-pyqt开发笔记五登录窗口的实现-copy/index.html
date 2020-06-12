@@ -1,0 +1,43 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="ie=edge"><link id=favicon rel=icon type=image/x-icon href=/img/favicon.ico><link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/github-markdown.min.css><link rel=stylesheet href=/css/addon.css><style>@font-face{font-family:notosanssc;src:url(/css/NotoSansSC-Thin.ttf)}@font-face{font-family:roboto;src:url(/css/Roboto-Regular.ttf)}*{font-family:roboto,notosanssc!important}</style><title>我爱ETF</title></head><body><header id=header><h1><a href=/>我爱ETF</a></h1><nav class=sidebar-nav><a href=/dash/>仪表盘</a> |
+<a href=/news/>文摘</a> |
+<a href=/policies/>长赢</a> |
+<a href=/books/>书单</a> |
+<a href=/funds/>精品基金</a> |
+<a href=/tools/>量化工具</a> |
+<a href=/tags/>Tags</a> |
+<a href=/blog/>博客</a> |
+<a href=/about/>关于</a> |</nav></header><main id=main><article class="single markdown-body"><h1>PyQt开发笔记（五）登录窗口</h1><p><p>如何开发一个类似微信和QQ的登录提示框，用于验证或者预制输入（例如选择语言、代理服务器等）。</p><p>我们只看简单的逻辑实现，至于修饰图片、大小和布局不再本文讨论范围。</p><h2 id=控制窗口的创建和显示>控制窗口的创建和显示</h2><p>我们知道最简单的窗口是这样子的。</p><pre><code>from PySide2.QtWidgets import QApplication, QMainWindow
+app = QApplication(sys.argv) #主线程Application
+window = MainWindow() # 窗口
+window.show()
+sys.exit(app.exec_())
+</code></pre><p>这里面的show()是控制窗口显示的，类似还有close()</p><p>我们只要创建两个窗口，第一个close()，第二个show()就可以实现效果。</p><h2 id=登录框的实现>登录框的实现</h2><pre><code>from PySide2.QtWidgets import QApplication, QMainWindow
+app = QApplication(sys.argv) #主线程Application
+loginwindow = MainWindow() # 窗口
+loginwindow.show()
+sys.exit(app.exec_())
+</code></pre><p>加入密码判断逻辑</p><pre><code>from PySide2.QtUiTools import QUiLoader
+from PySide2.QtCore import QFile
+
+loginUi = QUiLoader.load(QFile('uilogin.ui'))
+loginUi.show()
+loginUi.btn.connect(verify)
+
+from PySide2.QtCore improt Slot
+
+@Slot #记得我们前面讨论过任何函数都可以被装饰城Slot接受函数
+def verify():
+    if loginUi.password_LineTextEdit.text() == 'balabalala':
+        #密码对
+        loginUi.close() #关闭登录，开启主界面
+        window = QMainWindow()
+        window.show() 
+    else:
+        from PySide2.QtWidgets import QMessageBox
+        msg = QMessageBox()
+        msg.setText(&quot;密码错误&quot;)
+        msgBox.exec()
+</code></pre><h2 id=尾声>尾声</h2><p>登录窗口的逻辑比较简单，创建窗口，摧毁窗口，创建下一个窗口。</p><p>实际代码会把Login单独写一个Ui，单独写一个逻辑判断。做到Ui和逻辑分离。另外为了不依赖主窗口，还可以把NextWindow要创建的窗口作为初始化参数，判断成功后，直接显示NextWindow。</p></p></div><hr><strong>文章分类：</strong>
+<a class=item__tag href=/tags/pyqt>#PyQt</a>
+<a class=item__tag href=/tags/pyside2>#PySide2</a></article><article class=single><strong>推荐阅读:</strong><ul><li><a href=/blog/2020-06-01-pyqt%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0%E4%B8%89%E5%A4%9A%E7%BA%BF%E7%A8%8B/>PyQt开发笔记（三）多线程</a></li><li><a href=/blog/2020-06-01-pyqt%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0%E5%9B%9B%E9%80%9A%E7%94%A8worker/>PyQt开发笔记（四）通用的Worker</a></li><li><a href=/blog/2020-05-31-pyqt%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0%E4%BA%8C-/>PyQt开发笔记（二）</a></li><li><a href=/blog/2020-05-15-pyqt%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0%E4%B8%80/>PyQt开发笔记（一）</a></li></ul></article><div id=comment><strong class=alert>请您在评论时遵守<a target=blank href=http://www.cac.gov.cn/2019-12/20/c_1578375159509309.htm>国家法律法规</a>:</strong><div id=lv-container data-id=city data-uid="MTAyMC80OTU3OS8yNjA3MA=="><script type=text/javascript>(function(d,s){var j,e=d.getElementsByTagName(s)[0];if(typeof LivereTower==='function'){return;}
+j=d.createElement(s);j.src='https://cdn-city.livere.com/js/embed.dist.js';j.async=true;e.parentNode.insertBefore(j,e);})(document,'script');</script><noscript>为正常使用来必力评论功能请激活JavaScript</noscript></div></div></main><footer id=footer><ol><li><a href=http://52etf.net>版权&copy;52etf.net</a></li><li><a href=https://creativecommons.org/licenses/by-sa/4.0/deed.zh>协议CC BY-SA 4.0</a></li><li><a href=http://www.beian.miit.gov.cn>豫ICP备20016066号</a></li></ol></footer></body></html>

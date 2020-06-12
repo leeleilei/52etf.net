@@ -1,0 +1,46 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="ie=edge"><link id=favicon rel=icon type=image/x-icon href=/img/favicon.ico><link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/github-markdown.min.css><link rel=stylesheet href=/css/addon.css><style>@font-face{font-family:notosanssc;src:url(/css/NotoSansSC-Thin.ttf)}@font-face{font-family:roboto;src:url(/css/Roboto-Regular.ttf)}*{font-family:roboto,notosanssc!important}</style><title>我爱ETF</title></head><body><header id=header><h1><a href=/>我爱ETF</a></h1><nav class=sidebar-nav><a href=/dash/>仪表盘</a> |
+<a href=/news/>文摘</a> |
+<a href=/policies/>长赢</a> |
+<a href=/books/>书单</a> |
+<a href=/funds/>精品基金</a> |
+<a href=/tools/>量化工具</a> |
+<a href=/tags/>Tags</a> |
+<a href=/blog/>博客</a> |
+<a href=/about/>关于</a> |</nav></header><main id=main><article class="single markdown-body"><h1>PyQt开发笔记（四）通用的Worker</h1><p><h2 id=线程通信>线程通信</h2><p>概念很大，但比较容易理解。</p><p>GUI程序的核心在于交互，界面上的元素互动交互，例如鼠标移动，打飞机游戏跟着滚动，其他物品躲避。</p><p>其次是用户和界面直接的交互，比如输入一些信息、点击按钮。</p><p>这些交互被封装到QApplication主进程，其实也是有滞后的，不过循环非常快，用户感知不到明显滞后和卡顿。</p><p>当我们用了线程之后，由于是耗时操作，开始和结束时的互动就存在明显滞后。</p><p>总之，为了解决线程通信Qt的方案是捕捉信号后触发，就是Signal和Slot的概念，可以用在主线程（界面）和子线程之间，也可以用在所有线程之间。</p><p>学Qt必须要掌握的一个基本概念，理解了Signal和Slot就基本理解了Qt程序设计的基本思路。</p><p>Signal的本质是产生信号，信号的作用是继续下一步的动作（Slot），可以使任何动作，这样就将元素连接了起来。</p><p>绑定信号和Slot，用的是Signal.connect(slot_function)，普通的函数不是Slot函数，只有内置的Slot可以访问（例如点击、关闭、内容改变等等）。</p><p>但PyQt中提供了强大的Slot装饰器，可以将任何函数和类包装秤Slot。</p><pre><code>@Slot()
+def slot_me():
+  print('i am ordinary slotted function')
+</code></pre><h2 id=通用的线程对象>通用的线程对象</h2><p>多线程是如此的常见，而信号和槽位无处不在，我实在想不出Qt为什么不直接包装一个通用的对象。</p><p>既然没有，我们设计一个。底稿是，</p><pre><code>class WorkerSignal(QObject):
+    #一个进程结束通常有三个返回值，是否成功、报错、结果
+    #注意Signal只能以QObject创建
+    prog = Signal(int)
+    done = Signal()
+    error = Signal(tuple)
+    result = Signal(QObject)
+    
+class Worker(QRunnable):
+    def __init__(self, fn, *args, **kwargs):
+    #我们的Worker接受任何操作
+        self.fn = fn
+        self.args = args
+        self.kwargs = kwargs
+        self.signals = WorkerSignal()
+        
+    def run(self):
+        try:
+            result = self.fn(*self.args, **self.kwargs)
+         except:
+            #捕捉到错误
+            traceback.print_exc()
+            exctype, value = sys.exc_info()[:2]
+            self.signals.error.emit((exctype, value, traceback.format_exc()))
+        else:
+            #如果没有处罚exception，则发射结果
+            self.signals.result.emit(result)
+        finally:
+            #无论如何告诉别人自己结束了，附带发射一波
+            self.signals.done.emit()
+</code></pre><p>通过以上的Worker和Signal设计，我们就有了一个通用的Worker可以接受任何苦力劳动，并且劳动时及时告诉老板干的怎么样。</p><p>在主线程或者其他线程中，捕捉到signal后，可以绑定signal触发下一个Slot，这个世界就被连接了起来，产生无限的可能。</p><h2 id=尾声>尾声</h2><p>通过理解线程的概念，可以知道Qt世界是怎么连接起来的。就像Linux设计这算，Do it right, Do it once一样，虽然功能很小，但一个PIPE |连接符，把整个Unix的文件访问输入输出全部连接了起来。 Qt的Signal和Slot也是类似的设计，简单有效。</p></p></div><hr><strong>文章分类：</strong>
+<a class=item__tag href=/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B>#多线程</a>
+<a class=item__tag href=/tags/pyqt>#PyQt</a>
+<a class=item__tag href=/tags/pyside2>#PySide2</a></article><article class=single><strong>推荐阅读:</strong><ul><li><a href=/blog/2020-06-01-pyqt%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0%E4%B8%89%E5%A4%9A%E7%BA%BF%E7%A8%8B/>PyQt开发笔记（三）多线程</a></li><li><a href=/blog/2020-05-31-pyqt%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0%E4%BA%8C-/>PyQt开发笔记（二）</a></li><li><a href=/blog/2020-05-15-pyqt%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0%E4%B8%80/>PyQt开发笔记（一）</a></li></ul></article><div id=comment><strong class=alert>请您在评论时遵守<a target=blank href=http://www.cac.gov.cn/2019-12/20/c_1578375159509309.htm>国家法律法规</a>:</strong><div id=lv-container data-id=city data-uid="MTAyMC80OTU3OS8yNjA3MA=="><script type=text/javascript>(function(d,s){var j,e=d.getElementsByTagName(s)[0];if(typeof LivereTower==='function'){return;}
+j=d.createElement(s);j.src='https://cdn-city.livere.com/js/embed.dist.js';j.async=true;e.parentNode.insertBefore(j,e);})(document,'script');</script><noscript>为正常使用来必力评论功能请激活JavaScript</noscript></div></div></main><footer id=footer><ol><li><a href=http://52etf.net>版权&copy;52etf.net</a></li><li><a href=https://creativecommons.org/licenses/by-sa/4.0/deed.zh>协议CC BY-SA 4.0</a></li><li><a href=http://www.beian.miit.gov.cn>豫ICP备20016066号</a></li></ol></footer></body></html>

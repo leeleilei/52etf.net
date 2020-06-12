@@ -1,0 +1,117 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="ie=edge"><link id=favicon rel=icon type=image/x-icon href=/img/favicon.ico><link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/github-markdown.min.css><link rel=stylesheet href=/css/addon.css><style>@font-face{font-family:notosanssc;src:url(/css/NotoSansSC-Thin.ttf)}@font-face{font-family:roboto;src:url(/css/Roboto-Regular.ttf)}*{font-family:roboto,notosanssc!important}</style><title>我爱ETF</title></head><body><header id=header><h1><a href=/>我爱ETF</a></h1><nav class=sidebar-nav><a href=/dash/>仪表盘</a> |
+<a href=/news/>文摘</a> |
+<a href=/policies/>长赢</a> |
+<a href=/books/>书单</a> |
+<a href=/funds/>精品基金</a> |
+<a href=/tools/>量化工具</a> |
+<a href=/tags/>Tags</a> |
+<a href=/blog/>博客</a> |
+<a href=/about/>关于</a> |</nav></header><main id=main><article class="single markdown-body"><h1>用Python提取新闻联播摘要和关键字</h1><p><p>对一个业余投资爱好者来说，看新闻联播可比什么K线布林小道要有意义的多，传说会看新闻联播能少走十年弯路，我是深信不疑啊。</p><p>但我们不愿意蹲点看视频，还是文字报道读起来快，如果能有个摘要那就更好了，要是能有关键字提取，还能回顾一段时间的关键字，那岂不是时间轴都有了，啧啧，完美掌握国家政策趋势。</p><h2 id=内容>内容</h2><p>由于是给hugo静态网站添加内容，按照hugo模板生成一个文件即可。</p><p>文件内容主要有两部分组成</p><ol><li>今日关键字：由全天报道的所有内容自动生成，选取今日最佳关键字。另外针对投资领域，我们把指数名称、板块和行业等也做了关键字整理，如果发现这些关键字，也做高亮提示</li><li>新闻摘要：每篇报道的内容文字可能比较多，我们提取最关键的两句</li></ol><p>新闻源采用tushare的新闻联播接口。</p><p>中文的分词和摘要采用jiagu。</p><h2 id=运行环境>运行环境</h2><p>Github全家桶的Action功能（真香啊），可以完整打开一个docker进程。</p><ol><li>定时运行Python脚本拉取新闻数据</li><li>Hugo生成静态文件</li><li>提交repo</li></ol><p><del>## 网站内容自动更新</del></p><p><del>本地定时git pull，启动docker运行hugo生成内容。</del></p><h2 id=关键代码>关键代码</h2><p>获取新闻</p><pre><code>author:公众号：结丹记事本儿
+TOKEN = 'xxxx9841ad3c28d1xxx1da86fe73xxx1ec4'
+import tushare as ts
+
+ts.set_token(TOKEN)
+pro = ts.pro_api()
+news = pro.cctv_news(date='20200610')
+</code></pre><p>元数据处理</p><pre><code>#date
+from datetime import datetime, timedelta
+yesterday = datetime.today() - timedelta(days=1)
+yesterday = yesterday.strftime('%Y-%m-%d')
+today = datetime.today().strftime('%Y-%m-%d')
+
+#title
+title = 'CCTV新闻联播摘要{date}'.format(date=yesterday)
+
+# keywords
+text = ''.join(news.iloc[:,2].to_list())
+keywords = jiagu.keywords(text, 7) # 关键词
+keywords = [x for x in keywords if len(x)&gt;=2]
+keywords = ','.join(keywords)
+
+#content
+import jiagu
+reports = []
+for text in news.iloc[:,2].to_list():
+    reports.append(''.join(jiagu.summarize(text,2)))
+
+content = '\r\n\r\n'.join(reports)
+
+#强调关键字
+keys = keywords.split(',')
+for k in keys:
+    content = content.replace(k, '&lt;span style=&quot;border-bottom:4px solid orange;&quot;&gt;'+k+'&lt;/span&gt;')
+
+for k in KEYS:
+    content = content.replace(k, '&lt;span style=&quot;border-bottom:4px solid oceanblue;&quot;&gt;'+k+'&lt;/span&gt;')
+</code></pre><p><strong>模板写入文件</strong></p><pre><code>tpl = '''
+
+---
+title: {title}
+date: {date}
+tags: [CCTV, 新闻, {keywords}]
+draft: false
+---
+{content}
+'''
+md = tpl.format(
+    title=title,
+    date=today,
+    keywords=keywords,
+    content=content
+)
+
+open(title+'.md', 'w').write(md)
+</code></pre><p><strong>Github ci文件</strong></p><pre><code># This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
+
+name: Python application
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  schedule:
+    - cron: '0 22 * * *'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install tushare jiagu 
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        apt install hugo
+    - name: pull yesterday cctv news
+      run: |
+        # stop the build if there are Python syntax errors or undefined names
+        python3 /bin/pull_cctv_news.py 'content/news/'
+    - name: update static files by hugo
+      run: |
+        # stop the build if there are Python syntax errors or undefined names
+        hugo
+    - name: Commit changes
+      uses: EndBug/add-and-commit@v4
+      with:
+        author_name: 52etf.net
+        author_email: admin@52etf.net
+        message: &quot;日更一卒&quot;
+        add: &quot;/content/news/&quot;
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+</code></pre></p></div><hr><strong>文章分类：</strong>
+<a class=item__tag href=/tags/%E6%91%98%E8%A6%81>#摘要</a>
+<a class=item__tag href=/tags/cctv>#CCTV</a>
+<a class=item__tag href=/tags/jieba>#jieba</a>
+<a class=item__tag href=/tags/jiagu>#jiagu</a></article><div id=comment><strong class=alert>请您在评论时遵守<a target=blank href=http://www.cac.gov.cn/2019-12/20/c_1578375159509309.htm>国家法律法规</a>:</strong><div id=lv-container data-id=city data-uid="MTAyMC80OTU3OS8yNjA3MA=="><script type=text/javascript>(function(d,s){var j,e=d.getElementsByTagName(s)[0];if(typeof LivereTower==='function'){return;}
+j=d.createElement(s);j.src='https://cdn-city.livere.com/js/embed.dist.js';j.async=true;e.parentNode.insertBefore(j,e);})(document,'script');</script><noscript>为正常使用来必力评论功能请激活JavaScript</noscript></div></div></main><footer id=footer><ol><li><a href=http://52etf.net>版权&copy;52etf.net</a></li><li><a href=https://creativecommons.org/licenses/by-sa/4.0/deed.zh>协议CC BY-SA 4.0</a></li><li><a href=http://www.beian.miit.gov.cn>豫ICP备20016066号</a></li></ol></footer></body></html>

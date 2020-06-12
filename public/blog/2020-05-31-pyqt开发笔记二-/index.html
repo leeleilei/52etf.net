@@ -1,0 +1,45 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="ie=edge"><link id=favicon rel=icon type=image/x-icon href=/img/favicon.ico><link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/github-markdown.min.css><link rel=stylesheet href=/css/addon.css><style>@font-face{font-family:notosanssc;src:url(/css/NotoSansSC-Thin.ttf)}@font-face{font-family:roboto;src:url(/css/Roboto-Regular.ttf)}*{font-family:roboto,notosanssc!important}</style><title>我爱ETF</title></head><body><header id=header><h1><a href=/>我爱ETF</a></h1><nav class=sidebar-nav><a href=/dash/>仪表盘</a> |
+<a href=/news/>文摘</a> |
+<a href=/policies/>长赢</a> |
+<a href=/books/>书单</a> |
+<a href=/funds/>精品基金</a> |
+<a href=/tools/>量化工具</a> |
+<a href=/tags/>Tags</a> |
+<a href=/blog/>博客</a> |
+<a href=/about/>关于</a> |</nav></header><main id=main><article class="single markdown-body"><h1>PyQt开发笔记（二）</h1><p><p>(转载请注明：公众号->结丹记事本儿)</p><h2 id=用pyside2还是pyqt5>用PySide2还是PyQt5</h2><p>从功能上两者相似度是99.9%，由于版权的历史原因，在技术转让中最终达成的协议是，出了两个版本号，对应三个使用协议。</p><p>PySide2采用LGPL协议，PyQt5采用最严格的GPL，另外有针对商业用途的特定License。</p><p>如果采用PyQt5写代码，那么所有代码必须开源发布，或者购买一份商业协议可以不开源。否则属于破坏协定，违反法律。</p><p>如果采用PySide2写代码，调用代码和接口部分可以不开源，如果修改了原库则必须开源。</p><p>对于个人开发来说，建议使用PySide2，不公开源码，也不必担忧破坏协议问题。</p><p>但要注意的是，某些PySide2的子库是GPL协议的，相关子和关联代码原则上必须开源。</p><h2 id=用不用qtcreatordesigner>用不用QtCreator(Designer)</h2><p>百分之一百的推荐使用QtCreator来创建Ui，因为从一开始创造就是为了节约Ui开发时间，无论从稳定性和易用性都非常的方便。</p><p>使用Creator的最大好处是，代码和Ui分离，调整Ui后并不影响逻辑部分的代码。</p><p>不建议将Ui再次编译为py文件后导入，有些多此一举，可以直接用loader来导入。例如，</p><p><strong>不推荐</strong></p><pre><code>## author: 公众号-&gt;结丹记事本儿
+## 2020-05-31
+pyside2-uic mainwindow.ui &gt; ui_mainwindow.py
+from ui_mainwindow import Ui_MainWindow
+from PySide2.QtWidgets import QApplication, QMainWindow
+from PySide2.QtCore import QFile
+from ui_mainwindow import Ui_MainWindow
+
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super(MainWindow, self).__init__()
+        self.ui = Ui_MainWindow()
+        self.ui.setupUi(self)
+
+if __name__ == &quot;__main__&quot;:
+    app = QApplication(sys.argv)
+
+    window = MainWindow()
+    window.show()
+
+    sys.exit(app.exec_())
+</code></pre><p><strong>推荐</strong></p><pre><code>## author: 公众号-&gt;结丹记事本儿
+## 2020-05-31
+from PySide2.QtUiTools import QUiLoader
+ui_file = QFile(&quot;mainwindow.ui&quot;)
+ui_file.open(QFile.ReadOnly)
+
+loader = QUiLoader()
+window = loader.load(ui_file)
+window.show()
+</code></pre><p>然后就可以访问window的所有属性和方法。这种方式能大大节约Ui时间，也能减少学习Qt的曲线难度。否则一开始就会被Layout这个可怕怪物打的服服帖帖。(转载请注明：公众号->结丹记事本儿)</p><h2 id=快速的编码方法>快速的编码方法</h2><ol><li>用铅笔和稿纸手绘界面</li><li>打开QtCreator复制一个界面，不要纠结美观度，标识好widget元素后，速度出稿</li><li>用写过的模板工程开始编码（下节介绍模板工程的结构）</li><li>用QThread和QPool来多线程你的程序（模板内容）</li><li>用logging来记录日志（模板内容）</li><li>多用自定义的Signal和Slot来粘结逻辑</li><li>将功能缩写到一个widget上，最小化功能单元，不要创建一个大工程</li><li>分离出的一个个小Widget可以最终组装到parent window上</li><li>多用progressbar+thread+signal来显示进度</li></ol><h2 id=ui和逻辑的分离>Ui和逻辑的分离</h2><ol><li>QtCreator创建界面</li><li>QUiLoader动态导入界面</li><li>Signal/Slot/Action写到主界面上</li></ol><h2 id=qthread和qpoolqrunnable>QThread和QPool/QRunnable</h2><p>Qt的第二天就应该用多线程的概念，否则自己写的程序会是卡机程序，非常的弱鸡。</p><p>QPool相对于QThread可以控制并发数量，如果既要后台运行，又要控制顺序，那么用QPool就没错。</p><p>如果要控制针对一个Object的读写，可以用QMutex。</p><h2 id=信号signal和槽位slot>信号Signal和槽位Slot</h2><p>Qt的第三天应该搞明白的概念就是Signal和Slot，鬼知道为什么Slot翻译成槽位。</p><p>Signal和Slot是Qt的核心和优势概念，前者是发射器，后者是接收器。前者可以发射自定义的一些Signal，比如点击、最大化、关闭、双击、移动、焦点、内容变更等等，此时会产生一个Signal对象，对象可以connect绑定一个接收器，隐含传递Signal和一些变量。</p><p>这里的接收器就是Slot的概念，非要强制理解slot语义可以认为是一个凹槽，而Signal是发射凸器。</p><p>信号（发射）和槽位（接受）组成了所有对象的连接关系，一个个的Widget活了过来，产生了互动。例如点击按钮，显示一个什么，文本改变，产生搜索，数据改变，绘图自动改变等等。</p><p>总之，如果你想让Qt的widget产生互动，就要用到信号和槽位，否则就不用。（当你不用时，你的程序也很弱鸡没有什么实用价值）。</p></p></div><hr><strong>文章分类：</strong>
+<a class=item__tag href=/tags/qtdesigner>#QtDesigner</a>
+<a class=item__tag href=/tags/signal>#Signal</a>
+<a class=item__tag href=/tags/slot>#Slot</a>
+<a class=item__tag href=/tags/pyqt>#PyQt</a>
+<a class=item__tag href=/tags/pyside2>#PySide2</a></article><article class=single><strong>推荐阅读:</strong><ul><li><a href=/blog/2020-05-15-pyqt%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0%E4%B8%80/>PyQt开发笔记（一）</a></li></ul></article><div id=comment><strong class=alert>请您在评论时遵守<a target=blank href=http://www.cac.gov.cn/2019-12/20/c_1578375159509309.htm>国家法律法规</a>:</strong><div id=lv-container data-id=city data-uid="MTAyMC80OTU3OS8yNjA3MA=="><script type=text/javascript>(function(d,s){var j,e=d.getElementsByTagName(s)[0];if(typeof LivereTower==='function'){return;}
+j=d.createElement(s);j.src='https://cdn-city.livere.com/js/embed.dist.js';j.async=true;e.parentNode.insertBefore(j,e);})(document,'script');</script><noscript>为正常使用来必力评论功能请激活JavaScript</noscript></div></div></main><footer id=footer><ol><li><a href=http://52etf.net>版权&copy;52etf.net</a></li><li><a href=https://creativecommons.org/licenses/by-sa/4.0/deed.zh>协议CC BY-SA 4.0</a></li><li><a href=http://www.beian.miit.gov.cn>豫ICP备20016066号</a></li></ol></footer></body></html>

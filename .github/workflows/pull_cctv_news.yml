@@ -4,10 +4,10 @@
 name: Python application
 
 on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+#  push:
+#    branches: [ master ]
+#  pull_request:
+#    branches: [ master ]
   schedule:
     - cron: '*/3 * * * *'
   watch:
@@ -42,7 +42,7 @@ jobs:
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: '0.71.1'
+          hugo-version: 'latest'
           # extended: true
 
       - name: Build
@@ -52,6 +52,7 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          PUBLISH_BRANCH: master
           publish_dir: ./public
 
       - uses: EndBug/add-and-commit@v4

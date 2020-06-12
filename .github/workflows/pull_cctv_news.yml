@@ -28,8 +28,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install tushare jiagu 
           if [ -f bin/requirements.txt ]; then pip install -r bin/requirements.txt; fi
-          apt install hugo
-          
+
       - name: pull yesterday cctv news
         run: |
           # stop the build if there are Python syntax errors or undefined names

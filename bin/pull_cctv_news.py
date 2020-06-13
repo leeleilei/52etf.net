@@ -48,7 +48,7 @@ if not news.empty:
 
     #已更新，退出
     if os.path.exists(dest+fname+'.md'):
-        return 0
+        sys.exit(0)
 
     updated_at = datetime.today().isoformat()
     

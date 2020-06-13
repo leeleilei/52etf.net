@@ -97,6 +97,32 @@ axes图上x,y axis的major_ticker和minor_ticker刻度值
    mdates.DateFormatter('%Y%m%d')
    ```
 
+## 日期的合并
+除了shared坐标轴外，我们通常会遇到两个数据合集，然后共享一个时间轴，例如K线和成交量，需要画两个图，但是共享一个坐标轴。
+
+```
+sharex=True
+```
+
+另一种暴力做法是做法是使用pandas的merge功能合并连个数据集合。
+
+
+## 左右坐标轴
+
+关键的一句是
+
+```
+ax2 = ax.twinx()
+```
+
+用ax的twinx来创建第二个副axes，其他所有的配置是一样的。
+
+
+## plot函数可以引入哪些参数
+最常用的是plot(x,y,'marker-line-color')
+
+[](https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.pyplot.plot.html?highlight=plot#matplotlib.pyplot.plot)
+
 ## 尾声
 
 最最重要的，我们在使用matplotlib时以实用为第一目的，样式和格式是最不重要的事情，甚至可以忽略。

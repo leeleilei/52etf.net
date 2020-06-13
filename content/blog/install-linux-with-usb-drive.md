@@ -1,5 +1,5 @@
 ---
-blog: true
+display: false
 date: 2009-01-01
 title: Install Linux With Pen Drive
 categories: [IT]

@@ -1,7 +1,7 @@
 {{ $start := add (sub (mul .Paginator.PageSize .Paginator.PageNumber) .Paginator.PageSize) 1 }}
 <ol start={{ $start }}>
     {{ range .Paginator.Pages }}
-    {{ if not (eq .Params.blog true) }}
+    {{ if not (eq .Params.display false) }}
 
     <li class="item">
         {{ if (isset .Params "itemurl") }}

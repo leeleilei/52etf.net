@@ -1,5 +1,5 @@
 ---
-blog: true
+display: false
 date: 2020-06-11
 title: 用Python提取新闻联播摘要和关键字
 categories: [Python]

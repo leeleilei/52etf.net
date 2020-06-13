@@ -1,5 +1,5 @@
 ---
-blog: true
+display: false
 title: "Note of Python import "
 categories: [IT]
 tags: [Python]

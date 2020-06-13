@@ -1,6 +1,6 @@
 
 ---
-blog: true
+display: false
 date: 2009-08-01
 title: Use FREE and Open-Source Software to Organise Your Life Efficiently
 categories: [GTD]

@@ -1,5 +1,5 @@
 ---
-blog: true
+display: false
 title: "PyQt开发笔记（四）通用的Worker"
 categories: [Python]
 tags: [多线程,PyQt, PySide2]

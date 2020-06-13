@@ -1,6 +1,6 @@
 import sys
 import jiagu
-
+import os.path
 
 KEYS = "纳斯达克 中概股 国债 债券 养老 红利 消费 5G 科技 一带一路 稳健 湾区 消费价格 通信 创业板 证券 新能源 汽车 医药 龙头 金融 人工智能 传媒 国企改革 军工 房地产 半导体 原油".split(' ')
 KEYS.extend('航空 海运 交运 保险 公用 农牧 制造 券商 化工 医疗 贸易 安防 建材 房地产 旅游 金属 服务 机械 材料 民航 机场 水泥 水运 汽车 港口 煤炭 物流 环保 电信 电力 电子 石油 船舶 装修 装饰 设备 金属 通讯 酒店 银行 公路'.split(' '))
@@ -45,6 +45,11 @@ if not news.empty:
     #title 昨日
     title = 'CCTV新闻联播摘要{date}'.format(date=today_str)
     fname = 'xwlb{date}'.format(date=today_str)
+
+    #已更新，退出
+    if os.path.exists(dest+fname+'.md'):
+        return 0
+
     updated_at = datetime.today().isoformat()
     
     #content
@@ -84,7 +89,7 @@ if not news.empty:
         content=content
     )
 
-    import os.path
+
     open(os.path.abspath(dest+fname+'.md'), 'w', encoding='utf8').write(md)
 
 else:

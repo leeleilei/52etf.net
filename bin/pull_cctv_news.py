@@ -14,6 +14,7 @@ date: {date}
 tags: [新闻联播, {keywords}]
 draft: false
 ---
+
 {content}
 '''
 
@@ -64,10 +65,10 @@ if not news.empty:
 
     # 高亮显示关键字，需要hugo默认打开支持html，参考config.yaml
     for k in text_keywords:
-        content = content.replace(k, '<span style="border-bottom:4px solid #E32636;">'+k+'</span>')
+        content = content.replace(k, '<span class="keywords_content">'+k+'</span>')
 
     for k in eco_keywords:
-        content = content.replace(k, '<span style="border-bottom:4px solid orange;">'+k+'</span>')
+        content = content.replace(k, '<span class="keywords_fund">'+k+'</span>')
 
     text_keywords.extend(eco_keywords)
     text_keywords = set(text_keywords)

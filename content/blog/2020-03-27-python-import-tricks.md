@@ -50,7 +50,7 @@ reload(foo)
 ```bash
 $ Python3 bar1.py
 $ Python3
->> import bar1.py
+> import bar1.py
 ```
 
 此时，bar1.py虽然位于foo1 package内，但解释器直接调用bar1.py，故foo1命名空间（package）是不存在的，以下import是正确的

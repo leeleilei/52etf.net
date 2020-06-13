@@ -27,7 +27,7 @@ foo = __import__(&quot;foo&quot;)
 reload(foo)
 </code></pre><p>当你被import折磨的欲仙欲死时，先要理解使用场景。就是说不同的调用方式（作为package、作为module文件、作为shell、作为Python3 -m 参数调用）创造出的namesapce（命名空间是不同的）。</p><h4 id=作为独立文件module-被使用>作为独立文件(module) 被使用</h4><p>类似于在Python shell中执行导入，例如</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ Python3 bar1.py
 $ Python3
-&gt;&gt; import bar1.py
+&gt; import bar1.py
 </code></pre></div><p>此时，bar1.py虽然位于foo1 package内，但解释器直接调用bar1.py，故foo1命名空间（package）是不存在的，以下import是正确的</p><pre><code># main.py
 import foo1
 from foo1 import bar1

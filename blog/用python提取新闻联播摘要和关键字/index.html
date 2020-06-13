@@ -39,7 +39,7 @@ content = '\r\n\r\n'.join(reports)
 #强调关键字
 keys = keywords.split(',')
 for k in keys:
-    content = content.replace(k, '&lt;span style=&quot;border-bottom:4px solid orange;&quot;&gt;'+k+'&lt;/span&gt;')
+    content = content.replace(k, '&lt;span &gt;'+k+'&lt;/span&gt;')
 
 for k in KEYS:
     content = content.replace(k, '&lt;span style=&quot;border-bottom:4px solid oceanblue;&quot;&gt;'+k+'&lt;/span&gt;')

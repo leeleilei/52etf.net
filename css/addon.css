@@ -1,3 +1,11 @@
 article.markdown-body h1 {
     text-align: left;
 }
+
+span.keywords_content {
+    border-bottom:4px solid #E32636;
+}
+
+span.keywords_fund {
+    border-bottom:4px solid orange;
+}

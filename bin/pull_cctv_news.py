@@ -43,7 +43,8 @@ news = pro.cctv_news(date=today_str.replace('-',''))
 
 if not news.empty:
     #title 昨日
-    title = 'xwlb{date}'.format(date=today_str)
+    title = 'CCTV新闻联播摘要{date}'.format(date=today_str)
+    fname = 'xwlb{date}'.format(date=today_str)
     updated_at = datetime.today().isoformat()
     
     #content
@@ -84,7 +85,7 @@ if not news.empty:
     )
 
     import os.path
-    open(os.path.abspath(dest+title+'.md'), 'w', encoding='utf8').write(md)
+    open(os.path.abspath(dest+fname+'.md'), 'w', encoding='utf8').write(md)
 
 else:
     print('nothing to update')

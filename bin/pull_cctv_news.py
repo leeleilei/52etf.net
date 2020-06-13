@@ -43,7 +43,7 @@ news = pro.cctv_news(date=today_str.replace('-',''))
 
 if not news.empty:
     #title 昨日
-    title = 'CCTV新闻联播摘要{date}'.format(date=today_str)
+    title = 'xwlb{date}'.format(date=today_str)
     updated_at = datetime.today().isoformat()
     
     #content

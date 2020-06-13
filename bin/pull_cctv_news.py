@@ -26,6 +26,8 @@ except IndexError:
 today = datetime.today()
 today = china_tz.localize(today)
 today_str = today.strftime('%Y%m%d')
+updated_str = today.isoformat()
+
 #init tushare
 import tushare as ts
 TOKEN = '2ecdcdc049841ad3c28d13653925f79d41da86fe73dd49f5897f1ec4'
@@ -85,7 +87,7 @@ if not news.empty:
     # 更新日期是今日
     md = tpl.format(
         title=title,
-        date=today_str,
+        date=updated_str,
         keywords=keywords,
         content=content
     )

@@ -50,8 +50,6 @@ if not news.empty:
     if os.path.exists(dest+fname+'.md'):
         sys.exit(0)
 
-    updated_at = datetime.today().isoformat()
-    
     #content
     import jiagu
 

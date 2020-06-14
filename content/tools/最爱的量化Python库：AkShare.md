@@ -45,63 +45,11 @@ Akshare支持的接口非常广，文档丰富，完美符合我的预期，
 通过以上数据接口，可以搭建所有我们需要的指标，再搭配回测框架（例如vnpy和聚宽）则可以测试策略的有效性。
 
 ## 全球债券行情
+![20200614112350](https://cdn.jsdelivr.net/gh/leeleilei/leeleilei.github.io/assets/images/20200614112350.png)
 
-![20200613233135](https://cdn.jsdelivr.net/gh/leeleilei/leeleilei.github.io/assets/images/20200613233135.png)
-
-```
-#%matplotlib inline
-import matplotlib.pyplot as plt
-from mpl_finance import candlestick_ohlc
-import matplotlib.dates as mdates
-import akshare as ak
-import urllib
-
-import matplotlib.font_manager as fm
+除了线图外，使用ax.twinx添加一个副坐标沪深300作为对比图。
 
 
-# 设置字体路径，colab平台必须
-path = '/usr/share/fonts/truetype/SimHei.ttf'
-github_url = 'https://github.com/adobe-fonts/source-han-sans/blob/release/OTF/SimplifiedChinese/SourceHanSansSC-Normal.otf'
-url = github_url + '?raw=true'  # You want the actual file, not some html
-from tempfile import NamedTemporaryFile
-response = urllib.request.urlopen(url)
-f = NamedTemporaryFile(delete=False, suffix='.ttf')
-f.write(response.read())
-f.close()
-fontprop = fm.FontProperties(fname=f.name, size=13)
-# 
-
-years = mdates.YearLocator()   # every year
-months = mdates.MonthLocator()  # every month
-years_fmt = mdates.DateFormatter('%Y')
-
-df = ak.bond_investing_global(country="中国", index_name="中国10年期国债", period="每月", start_date="1990-01-01", end_date="2020-06-13")
-df.reset_index(inplace=True)
-import matplotlib.dates as mdates
-df['日期'] = df['日期'].map(mdates.date2num)
-
-
-fig, ax = plt.subplots(figsize=(20,5))
-
-ax.plot(df['日期'], df['收盘'])
-
-ax.xaxis_date()
-ax.xaxis.set_major_locator(years)
-ax.xaxis.set_minor_locator(months)
-ax.xaxis.set_major_formatter(years_fmt)
-
-ax.set_title(label='中国十年期国债收益率', fontproperties=fontprop)
-ax.set_xlabel(xlabel='时间', fontproperties=fontprop)
-ax.set_ylabel(ylabel='到期收益率', fontproperties=fontprop)
-ax.legend()
-ax.grid(True)
-plt.show()
-
-```
-
-还可以加一个副坐标沪深300作为对比图,
-
-![20200614002351](https://cdn.jsdelivr.net/gh/leeleilei/leeleilei.github.io/assets/images/20200614002351.png)
 ```
 #%matplotlib inline
 import matplotlib.pyplot as plt

@@ -1,3 +1,5 @@
 jiagu
-tushare
+akshare
 pandas
+matplotlib
+pytz

@@ -9,6 +9,18 @@
     <link rel="stylesheet" href="{{ "css/github-markdown.min.css" |relURL }}">
     <link rel="stylesheet" href="{{ "css/addon.css" |relURL }}">
 
+    <script src="https://unpkg.com/zooming/build/zooming.min.js"></script>
+    <script>
+      // Listen to images after DOM content is fully loaded
+      document.addEventListener('DOMContentLoaded', function () {
+        new Zooming({
+          // options...
+          scaleExtra: 0.6,
+        }).listen('.img-zoomable')
+      })
+    </script>
+
+
     <style>
     @font-face{
       font-family: "NotoSansSC";

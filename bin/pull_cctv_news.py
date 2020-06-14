@@ -54,7 +54,7 @@ if not news.empty:
     import jiagu
 
     text = ''.join(news.iloc[:,2].to_list())
-    content = '\r\n\r\n'.join(jiagu.summarize(text, 10))
+    content = '\n\n'.join(jiagu.summarize(text, 10))
 
     # keywords
     text = ''.join(news.iloc[:,2].to_list())

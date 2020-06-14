@@ -11,8 +11,8 @@ A股全市场等权重PE分位
 <div>
 中国十年期国债收益率
     <div class=''>
-      <a href='cn10ybond.png' target='blank'><img src='cn10ybond.png' class='' /></a>
-      <a href='cn10ybondsh300.png' target='blank'><img src='cn10ybondsh300.png' class='' /></a>
+      <a href='/img/cn10ybond.png' target='blank'><img src='/img/cn10ybond.png' class='' /></a>
+      <a href='/img/cn10ybondsh300.png' target='blank'><img src='/img/cn10ybondsh300.png' class='' /></a>
     </div>
 </div>
 

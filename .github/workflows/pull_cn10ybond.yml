@@ -27,8 +27,8 @@ jobs:
       - name: Main
         run: |
           # stop the build if there are Python syntax errors or undefined names
-          python3 bin/pull_cn10ybondsh300.py static/img/
-          python3 bin/pull_cn10ybond.py static/img/
+          python3 bin/pull_cn10ybondsh300.py content/images/
+          python3 bin/pull_cn10ybond.py content/images/
 
       - uses: EndBug/add-and-commit@v4
         with:

@@ -25,7 +25,7 @@ jobs:
           pip install tushare jiagu 
           if [ -f bin/requirements.txt ]; then pip install -r bin/requirements.txt; fi
 
-      - name: pull yesterday cctv news
+      - name: Main
         run: |
           # stop the build if there are Python syntax errors or undefined names
           python3 bin/pull_cctv_news.py 'content/news/'

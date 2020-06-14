@@ -29,9 +29,9 @@ china_tz = pytz.timezone("Asia/Shanghai")
 try:
     today_str = sys.argv[2]
 except IndexError:
-    today_str = china_tz.localize(datetime.now()).astimezone().isoformat()[:10].replace('-','')
+    today_str = datetime.now().astimezone(china_tz).isoformat()[:10].replace('-','')
 finally:
-    updated_str = china_tz.localize(datetime.now()).astimezone().isoformat()
+    updated_str = datetime.now().astimezone(china_tz).isoformat()
 
 #init tushare
 import tushare as ts

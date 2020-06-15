@@ -23,3 +23,4 @@ Hugo静态网站生成
 1. 雪球关键字做seo
 1. 集成特定页面的扫码阅读
 
+![](content/images/weixin.jpg)

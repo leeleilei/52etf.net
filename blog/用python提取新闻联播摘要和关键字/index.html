@@ -1,4 +1,4 @@
-<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="ie=edge"><link id=favicon rel=icon type=image/x-icon href=/img/favicon.ico><link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/github-markdown.min.css><link rel=stylesheet href=/css/addon.css><script src=https://unpkg.com/zooming/build/zooming.min.js></script><script>document.addEventListener('DOMContentLoaded',function(){new Zooming({scaleExtra:0.6,}).listen('.img-zoomable')})</script><style>@font-face{font-family:notosanssc;src:url(/css/NotoSansSC-Thin.ttf)}@font-face{font-family:roboto;src:url(/css/Roboto-Regular.ttf)}*{font-family:roboto,notosanssc!important}</style><title>我爱ETF</title></head><body><header id=header><h1><a href=/>我爱ETF</a></h1><nav class=sidebar-nav><a href=/dash/>仪表盘</a> |
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="ie=edge"><link id=favicon rel=icon type=image/x-icon href=/img/favicon.ico><link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/github-markdown.min.css><link rel=stylesheet href=/css/addon.css><meta name=referrer content="no-referrer"><script src=https://unpkg.com/zooming/build/zooming.min.js></script><script>document.addEventListener('DOMContentLoaded',function(){new Zooming({scaleExtra:0.6,}).listen('.img-zoomable')})</script><style>@font-face{font-family:notosanssc;src:url(/css/NotoSansSC-Thin.ttf)}@font-face{font-family:roboto;src:url(/css/Roboto-Regular.ttf)}*{font-family:roboto,notosanssc!important}</style><title>我爱ETF</title></head><body><header id=header><h1><a href=/>我爱ETF</a></h1><nav class=sidebar-nav><a href=/dash/>仪表盘</a> |
 <a href=/news/>文摘</a> |
 <a href=/policies/>长赢</a> |
 <a href=/books/>书单</a> |
@@ -6,7 +6,7 @@
 <a href=/tools/>量化工具</a> |
 <a href=/tags/>Tags</a> |
 <a href=/blog/>博客</a> |
-<a href=/about/>关于</a> |</nav></header><main id=main><article class="single markdown-body"><h1>用Python提取新闻联播摘要和关键字</h1><p><p><img src=https://cdn.jsdelivr.net/gh/leeleilei/leeleilei.github.io/assets/images/20200612110411.png alt=20200612110411></p><p>对一个业余投资爱好者来说，看新闻联播可比什么K线布林小道要有意义的多，传说会看新闻联播能少走十年弯路，我是深信不疑啊。</p><p>但我们不愿意蹲点看视频，还是文字报道读起来快，如果能有个摘要那就更好了，要是能有关键字提取，还能回顾一段时间的关键字，那岂不是时间轴都有了，啧啧，完美掌握国家政策趋势。</p><h2 id=内容>内容</h2><p>由于是给hugo静态网站添加内容，按照hugo模板生成一个文件即可。</p><p>文件内容主要有两部分组成</p><ol><li>今日关键字：由全天报道的所有内容自动生成，选取今日最佳关键字。另外针对投资领域，我们把指数名称、板块和行业等也做了关键字整理，如果发现这些关键字，也做高亮提示</li><li>新闻摘要：每篇报道的内容文字可能比较多，我们提取最关键的两句</li></ol><p>新闻源采用tushare的新闻联播接口。</p><p>中文的分词和摘要采用jiagu。</p><h2 id=运行环境>运行环境</h2><p>Github全家桶的Action功能（真香啊），可以完整打开一个docker进程。</p><ol><li>定时运行Python脚本拉取新闻数据</li><li>Hugo生成静态文件</li><li>提交repo</li></ol><p><img src=https://cdn.jsdelivr.net/gh/leeleilei/leeleilei.github.io/assets/images/20200612110507.png alt=20200612110507></p><p><del>## 网站内容自动更新</del></p><p><del>本地定时git pull，启动docker运行hugo生成内容。</del></p><h2 id=关键代码>关键代码</h2><p>获取新闻</p><pre><code>author:公众号：结丹记事本儿
+<a href=/about/>关于</a> |</nav></header><main id=main><article class="single markdown-body"><h1>用Python提取新闻联播摘要和关键字</h1><h3>Thursday, Jun 11, 2020</h3><p><p><img src=https://cdn.jsdelivr.net/gh/leeleilei/leeleilei.github.io/assets/images/20200612110411.png alt=20200612110411></p><p>对一个业余投资爱好者来说，看新闻联播可比什么K线布林小道要有意义的多，传说会看新闻联播能少走十年弯路，我是深信不疑啊。</p><p>但我们不愿意蹲点看视频，还是文字报道读起来快，如果能有个摘要那就更好了，要是能有关键字提取，还能回顾一段时间的关键字，那岂不是时间轴都有了，啧啧，完美掌握国家政策趋势。</p><h2 id=内容>内容</h2><p>由于是给hugo静态网站添加内容，按照hugo模板生成一个文件即可。</p><p>文件内容主要有两部分组成</p><ol><li>今日关键字：由全天报道的所有内容自动生成，选取今日最佳关键字。另外针对投资领域，我们把指数名称、板块和行业等也做了关键字整理，如果发现这些关键字，也做高亮提示</li><li>新闻摘要：每篇报道的内容文字可能比较多，我们提取最关键的两句</li></ol><p>新闻源采用tushare的新闻联播接口。</p><p>中文的分词和摘要采用jiagu。</p><h2 id=运行环境>运行环境</h2><p>Github全家桶的Action功能（真香啊），可以完整打开一个docker进程。</p><ol><li>定时运行Python脚本拉取新闻数据</li><li>Hugo生成静态文件</li><li>提交repo</li></ol><p><img src=https://cdn.jsdelivr.net/gh/leeleilei/leeleilei.github.io/assets/images/20200612110507.png alt=20200612110507></p><p><del>## 网站内容自动更新</del></p><p><del>本地定时git pull，启动docker运行hugo生成内容。</del></p><h2 id=关键代码>关键代码</h2><p>获取新闻</p><pre><code>author:公众号：结丹记事本儿
 TOKEN = 'xxxx9841ad3c28d1xxx1da86fe73xxx1ec4'
 import tushare as ts
 
@@ -46,7 +46,7 @@ for k in KEYS:
 </code></pre><p><strong>模板写入文件</strong></p><pre><code>tpl = '''
 
 ---
-title: {title}
+title:  {title}
 date: {date}
 tags: [CCTV, 新闻, {keywords}]
 draft: false
@@ -133,7 +133,8 @@ jobs:
 </code></pre><h2 id=远端服务器配置>远端服务器配置</h2><p>仅仅需要在cron中添加一个git pull的每分钟更新任务</p><p>gh-pages是action模板里的配置，需要切换到对应gh-pages分支
 为了避免本地文件污染，同步前git reset先自毁本地更新</p><pre><code>*/1 * * * * cd /home/ali/52etf;git checkout gh-pages;git fetch --all;git reset --hard origin/gh-pages;git pull
 </code></pre><p>本地docker服务，nginx映射52etf的目录（对应远端git分支gh-pages内容）</p><pre><code>docker run --name 52etf-nginx -p 80:80 -v /home/ali/52etf/:/usr/share/nginx/html:ro -d nginx
-</code></pre><h2 id=尾声>尾声</h2><p>用Github提供的Action服务，可以一条龙编译部署新闻联播采集脚本。远端服务器只需要同步编译后的内容即可。</p><p>静态网站返璞归真，无论效率、SEO还是内容管理上都很有优势。如果采用动态后台Python开发，甚至现在流行的前端React开发，都达不到这个效果。React更多用在前端存在交互频繁的网页甚至小型app上比较占优势。</p><p>每种技术都有一定局限性，挑选场景合适的工具才是最合适的方案。</p><p>可以是一种混合模式</p><ol><li>后端Python FastApi</li><li>网站静态hugo</li><li>部分动态内容js来控制</li><li>对于单页面交互网页，或者复杂的交互应用用React</li><li>手机app可以用React（如果互动频繁）</li></ol></p></div><hr><strong>文章分类：</strong>
+</code></pre><h2 id=尾声>尾声</h2><p>用Github提供的Action服务，可以一条龙编译部署新闻联播采集脚本。远端服务器只需要同步编译后的内容即可。</p><p>静态网站返璞归真，无论效率、SEO还是内容管理上都很有优势。如果采用动态后台Python开发，甚至现在流行的前端React开发，都达不到这个效果。React更多用在前端存在交互频繁的网页甚至小型app上比较占优势。</p><p>每种技术都有一定局限性，挑选场景合适的工具才是最合适的方案。</p><p>可以是一种混合模式</p><ol><li>后端Python FastApi</li><li>网站静态hugo</li><li>部分动态内容js来控制</li><li>对于单页面交互网页，或者复杂的交互应用用React</li><li>手机app可以用React（如果互动频繁）</li></ol></p></div></article><article id=single><a href=http://52etf.net/blog/%E9%9D%99%E6%80%81%E7%AB%99%E7%82%B9%E5%92%8C%E5%8D%9A%E5%AE%A2%E6%9E%B6%E6%9E%84/>下一篇：静态站点和博客架构</a> &nbsp;
+<a href=http://52etf.net/blog/%E5%85%8D%E8%B4%B9cdn%E7%9A%84%E6%9C%80%E6%AD%A3%E7%A1%AE%E4%BD%BF%E7%94%A8%E5%A7%BF%E5%8A%BF/>上一篇：免费CDN的最正确使用姿势</a></article><article class=single><strong>推荐目录：</strong>
 <a class=item__tag href=/tags/%E6%91%98%E8%A6%81>#摘要</a>
 <a class=item__tag href=/tags/cctv>#CCTV</a>
 <a class=item__tag href=/tags/jieba>#jieba</a>

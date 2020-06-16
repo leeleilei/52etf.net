@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "PyQt开发实践（一）"
+title:  "PyQt开发实践（一）"
 categories: [Python]
 tags: [Python,pyqt]
 ---

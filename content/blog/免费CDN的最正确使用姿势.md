@@ -1,7 +1,7 @@
 ---
 display: false
 date: 2020-06-12
-title: 免费CDN的最正确使用姿势
+title:  免费CDN的最正确使用姿势
 categories: [Web]
 tags: [CDN,jsdelivr,github]
 draft: false

@@ -1,5 +1,5 @@
 ---
-title: "Hugo Documentation Website"
+title:  "Hugo Documentation Website"
 date: 2019-11-04T21:51:03+02:00
 itemurl: "https://gohugo.io/documentation/"
 sites: "gohugo.io"

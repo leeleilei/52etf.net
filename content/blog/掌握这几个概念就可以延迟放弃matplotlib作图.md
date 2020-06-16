@@ -1,7 +1,7 @@
 ---
 display: false
 date: 2020-06-13
-title: 掌握这几个概念就可以延迟放弃matplotlib作图
+title:  掌握这几个概念就可以延迟放弃matplotlib作图
 categories: [Python]
 tags: [matplotlib]
 draft: false

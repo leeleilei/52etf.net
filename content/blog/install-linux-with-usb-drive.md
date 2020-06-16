@@ -1,7 +1,7 @@
 ---
 display: false
 date: 2009-01-01
-title: Install Linux With Pen Drive
+title:  Install Linux With Pen Drive
 categories: [IT]
 tags: [Linux, Boot, LOF]
 draft: false

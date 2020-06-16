@@ -1,6 +1,6 @@
 ---
 display: false
-title: "PyQt开发笔记（四）通用的Worker"
+title:  "PyQt开发笔记（四）通用的Worker"
 categories: [Python]
 tags: [多线程,PyQt, PySide2]
 date: 2020-06-01

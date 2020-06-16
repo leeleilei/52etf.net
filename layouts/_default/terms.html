@@ -1,4 +1,5 @@
 {{ partial "header.html" . }}
+
 <div id="tags_list">
 <ol>
     {{ range $key, $value := .Data.Terms.ByCount }}
@@ -8,4 +9,5 @@
     {{ end }}
 </ol>
 </div>
+
 {{ partial "footer.html" . }}

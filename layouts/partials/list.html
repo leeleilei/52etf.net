@@ -1,7 +1,10 @@
-{{ $start := add (sub (mul .Paginator.PageSize .Paginator.PageNumber) .Paginator.PageSize) 1 }}
-<ol start={{ $start }}>
-    {{ range .Paginator.Pages }}
+{{ $paginator := .Paginator }}
 
+{{ $start := add (sub (mul $paginator.PageSize $paginator.PageNumber) $paginator.PageSize) 1 }}
+
+<ol start={{ $start }}>
+
+    {{ range $paginator.Pages }}
     <li class="item">
         {{ if (isset .Params "itemurl") }}
             <span><a class="item__title" href="{{ .Params.ItemUrl }}">{{ .Title}}</a></span>
@@ -17,4 +20,5 @@
     </li>
     {{ end }}
     </ol>
+
 {{ template "_internal/pagination.html" . }}

@@ -1,5 +1,5 @@
 ---
-title: "Hugo Twitter Account"
+title:  "Hugo Twitter Account"
 date: 2019-11-04T21:51:11+02:00
 itemurl: "https://twitter.com/GoHugoIO"
 sites: "twitter.com"

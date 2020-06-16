@@ -1,5 +1,5 @@
 ---
-title: 最爱的Python量化库：AkShare
+title:  最爱的Python量化库：AkShare
 date: 2020-06-14
 tags: [量化, python]
 ---

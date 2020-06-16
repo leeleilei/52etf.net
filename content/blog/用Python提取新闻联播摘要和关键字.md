@@ -1,7 +1,7 @@
 ---
 display: false
 date: 2020-06-11
-title: 用Python提取新闻联播摘要和关键字
+title:  用Python提取新闻联播摘要和关键字
 categories: [Python]
 tags: [摘要,CCTV,jieba,jiagu]
 draft: false
@@ -92,7 +92,7 @@ for k in KEYS:
 tpl = '''
 
 ---
-title: {title}
+title:  {title}
 date: {date}
 tags: [CCTV, 新闻, {keywords}]
 draft: false

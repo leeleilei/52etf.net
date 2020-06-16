@@ -9,7 +9,7 @@ KEYS.extend('货币 利率 准备金 央行 国债 股市 房地产 房产 贸�
 #hugo 文章模板
 tpl = '''
 ---
-title: {title}
+title:  {title}
 date: {date}
 tags: [新闻联播, {keywords}]
 draft: false

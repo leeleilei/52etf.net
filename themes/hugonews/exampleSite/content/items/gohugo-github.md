@@ -1,5 +1,5 @@
 ---
-title: "Hugo Github"
+title:  "Hugo Github"
 date: 2019-11-04T21:51:07+02:00
 itemurl: "https://github.com/gohugoio/hugo"
 sites: "github.com"

@@ -1,6 +1,6 @@
 ---
 display: false
-title: "Note of Python import "
+title:  "Note of Python import "
 categories: [IT]
 tags: [Python]
 date: 2020-03-27

@@ -1,6 +1,6 @@
 ---
 title:  书单
-comment: true
+comment: false
 ---
 > 投资是人生观世界观的折现
 

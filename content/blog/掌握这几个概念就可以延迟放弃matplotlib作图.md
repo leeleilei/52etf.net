@@ -17,14 +17,14 @@ draft: false
 看到方格子是很脑裂的事，尤其是被Python2的Unicode摩擦过的人。
 
 Do This
-```
+```python
 # 设置matplotlib正常显示中文和负号
 matplotlib.rcParams['font.sans-serif']=['SimHei']   # 用黑体显示中文
 matplotlib.rcParams['axes.unicode_minus']=False     # 正常显示负号
 ```
 
 或者 Do This 单独挂载字体
-```
+```python
 import matplotlib.font_manager as fm
 # 设置字体路径
 path = '/usr/share/fonts/truetype/SimHei.ttf'
@@ -50,12 +50,12 @@ Axes = Axe的复数，指x,y的Axis。
 我们见过最多的写法是 fig, ax = plt.subplot()
 
 subplot会返回一个tuple，(fig, ax) 默认一个figure和一个axes。当然也可以初始化nrows,ncols,zlocation，例如
-```
+```python
 fig, [ax1, ax2, ax3] = plt.subplot(1,3)
 ```
 
 注意并没有用
-```
+```python
 fig, ax1, ax2, ax3 = plot.subplot(1,3)
 ```
 因为tuple里面是(figure, axes)的结构，axes可以是一个或者n维的list
@@ -86,21 +86,21 @@ axes图上x,y axis的major_ticker和minor_ticker刻度值
    
 附加上刻度的调整
 1. 调整显示格式
-    ```
+    ```python
     from matplotlib.ticker import MultipleLocator, FormatStrFormatter
     xmajorLocator = MultipleLocator(20)  # 将x主刻度标签设置为20的倍数
     xmajorFormatter = FormatStrFormatter('%1.1f')  # 设置x轴标签文本的格式
     xminorLocator = MultipleLocator(5)  # 将x轴次刻度标签设置为5的倍数
     ```
 2. 日期的格式
-   ```
+   ```python
    mdates.DateFormatter('%Y%m%d')
    ```
 
 ## 日期的合并
 除了shared坐标轴外，我们通常会遇到两个数据合集，然后共享一个时间轴，例如K线和成交量，需要画两个图，但是共享一个坐标轴。
 
-```
+```python
 sharex=True
 ```
 
@@ -111,7 +111,7 @@ sharex=True
 
 关键的一句是
 
-```
+```python
 ax2 = ax.twinx()
 ```
 

@@ -12,6 +12,7 @@ paginate: 50
 
 permalinks:
   /: /:year/:month/:section/:filename/
+  
 summaryLength: 100
 hasCJKLanguage: true
 

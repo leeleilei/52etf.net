@@ -2,7 +2,7 @@
 ---
 title:   热评Google收购HTC Pixel团队-曲高和众
 date: 2017-09-22
-tags: ["公众号","曲高和众", "大V文集"]
+tags: ["曲高和众", ]
 display: false
 ---
 

@@ -2,7 +2,7 @@
 ---
 title:   Smart-Beta策略在中国，哪些因子表现最好？-大众宽客
 date: 2019-05-08
-tags: ["公众号","大众宽客", "大V文集"]
+tags: ["大众宽客", ]
 display: false
 ---
 

@@ -2,7 +2,7 @@
 ---
 title:   Section 2 筑基卷总纲 #2000-水库论坛
 date: 2016-05-30
-tags: ["公众号","水库论坛", "大V文集"]
+tags: ["水库论坛", ]
 display: false
 ---
 

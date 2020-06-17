@@ -2,7 +2,7 @@
 ---
 title:   OPPO/VIVO低配高价为何还卖得好？-曲高和众
 date: 2016-08-28
-tags: ["公众号","曲高和众", "大V文集"]
+tags: ["曲高和众", ]
 display: false
 ---
 

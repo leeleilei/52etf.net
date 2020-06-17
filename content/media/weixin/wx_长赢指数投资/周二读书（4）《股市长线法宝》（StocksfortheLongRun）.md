@@ -2,7 +2,7 @@
 ---
 title:  周二读书（4）《股市长线法宝》（Stocks for the Long Run）-长赢指数投资
 date: 2016-04-12
-tags: ["公众号","长赢指数投资", "大V文集"]
+tags: ["长赢指数投资", ]
 display: false
 ---
 

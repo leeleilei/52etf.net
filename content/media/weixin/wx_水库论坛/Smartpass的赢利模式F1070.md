@@ -2,7 +2,7 @@
 ---
 title:   Smartpass的赢利模式 #F1070-水库论坛
 date: 2017-05-04
-tags: ["公众号","水库论坛", "大V文集"]
+tags: ["水库论坛", ]
 display: false
 ---
 

@@ -2,7 +2,7 @@
 ---
 title:  周二读书（10）聪明的投资者（The Intelligent Investor）-长赢指数投资
 date: 2016-06-07
-tags: ["公众号","长赢指数投资", "大V文集"]
+tags: ["长赢指数投资", ]
 display: false
 ---
 

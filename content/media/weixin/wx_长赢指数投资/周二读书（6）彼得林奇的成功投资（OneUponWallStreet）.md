@@ -2,7 +2,7 @@
 ---
 title:  周二读书（6）彼得林奇的成功投资（One Up on Wall Street）-长赢指数投资
 date: 2016-04-26
-tags: ["公众号","长赢指数投资", "大V文集"]
+tags: ["长赢指数投资", ]
 display: false
 ---
 

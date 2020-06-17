@@ -2,7 +2,7 @@
 ---
 title:  周二读书（9）战胜华尔街（Beating the street）-长赢指数投资
 date: 2016-05-24
-tags: ["公众号","长赢指数投资", "大V文集"]
+tags: ["长赢指数投资", ]
 display: false
 ---
 

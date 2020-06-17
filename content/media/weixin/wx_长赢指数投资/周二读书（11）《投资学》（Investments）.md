@@ -2,7 +2,7 @@
 ---
 title:  周二读书（11）《投资学》（Investments）-长赢指数投资
 date: 2016-06-21
-tags: ["公众号","长赢指数投资", "大V文集"]
+tags: ["长赢指数投资", ]
 display: false
 ---
 

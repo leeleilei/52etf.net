@@ -2,7 +2,7 @@
 ---
 title:   Master不是人工智能 #F830-水库论坛
 date: 2017-01-05
-tags: ["公众号","水库论坛", "大V文集"]
+tags: ["水库论坛", ]
 display: false
 ---
 

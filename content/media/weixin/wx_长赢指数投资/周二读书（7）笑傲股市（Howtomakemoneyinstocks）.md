@@ -2,7 +2,7 @@
 ---
 title:  周二读书（7）笑傲股市（How to make money in stocks）-长赢指数投资
 date: 2016-05-03
-tags: ["公众号","长赢指数投资", "大V文集"]
+tags: ["长赢指数投资", ]
 display: false
 ---
 

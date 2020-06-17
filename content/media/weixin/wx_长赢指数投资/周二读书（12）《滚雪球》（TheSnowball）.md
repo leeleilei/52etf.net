@@ -2,7 +2,7 @@
 ---
 title:  周二读书（12）《滚雪球》（The Snowball）-长赢指数投资
 date: 2016-08-16
-tags: ["公众号","长赢指数投资", "大V文集"]
+tags: ["长赢指数投资", ]
 display: false
 ---
 

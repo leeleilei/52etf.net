@@ -2,7 +2,7 @@
 ---
 title:   PART I 天才如何养成的-大众宽客
 date: 2018-09-13
-tags: ["公众号","大众宽客", "大V文集"]
+tags: ["大众宽客", ]
 display: false
 ---
 

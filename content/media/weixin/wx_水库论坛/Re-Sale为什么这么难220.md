@@ -2,7 +2,7 @@
 ---
 title:   Re-Sale为什么这么难 #220-水库论坛
 date: 2015-06-08
-tags: ["公众号","水库论坛", "大V文集"]
+tags: ["水库论坛", ]
 display: false
 ---
 

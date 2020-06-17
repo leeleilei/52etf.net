@@ -2,7 +2,7 @@
 ---
 title:  周二读书（8）投资心理学（The psychology of Investing）-长赢指数投资
 date: 2016-05-17
-tags: ["公众号","长赢指数投资", "大V文集"]
+tags: ["长赢指数投资", ]
 display: false
 ---
 

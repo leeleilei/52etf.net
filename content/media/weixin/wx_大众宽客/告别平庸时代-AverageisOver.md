@@ -2,7 +2,7 @@
 ---
 title:   告别平庸时代 - Average is Over-大众宽客
 date: 2017-03-17
-tags: ["公众号","大众宽客", "大V文集"]
+tags: ["大众宽客", ]
 display: false
 ---
 

@@ -9,4 +9,8 @@
 
 {{ partial "list.html" . }}
 
+{{ if not (eq .Params.comment false) }}
+    {{ partial "comment.html" . }}
+{{ end }}
+
 {{ partial "footer.html" . }}

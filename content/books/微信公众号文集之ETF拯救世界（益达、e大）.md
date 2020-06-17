@@ -3,7 +3,7 @@
 date: 2020-06-16
 title:  微信公众号文集之ETF拯救世界（益达、e大）
 itemurl: '/tags/长赢指数投资/'
-tags: [更新日志]
+tags: [投资体系, 长赢指数投资, e大, 益达, etf拯救世界]
 draft: false
 ---
 

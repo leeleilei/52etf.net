@@ -45,25 +45,20 @@ menu:
     url: /tags/
     weight: -95
   - identifier: 'books'
-    name: 书单
+    name: 精品书单
     #pre: <i class="fa fa-book" aria-hidden="true"></i>
     url: /books/
     weight: -150
-  - name: 精品基金
+  - name: 千里挑基
     #pre: <i class="fa fa-diamond" aria-hidden="true"></i>
     url: /funds/
     weight: -140
-  - name: 长赢
+  - name: 投资体系
     #pre: <i class="fa fa-pie-chart" aria-hidden="true"></i>
     url: /policies/
     weight: -180
-  - identifier: 'news'    
-    name: 文摘
-    #pre: <i class="fa fa-globe" aria-hidden="true"></i>
-    url: /news/
-    weight: -190
   - identifier: 'dash'
-    name: 仪表盘
+    name: 经济仪表盘
     #pre: <i class='fa fa-tachometer'></i>
     url: /dash/
     weight: -200

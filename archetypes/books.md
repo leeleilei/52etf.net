@@ -1,8 +1,8 @@
 ---
 title:  "{{ replace .Name "-" " " | title }}"
 date: {{ .Date }}
-itemurl: "{{ .Site.BaseURL }}"
-tags: [要闻,]
+isbn: 
+tags: [书单,]
 draft: false
 comment: true
 ---

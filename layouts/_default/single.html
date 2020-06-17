@@ -4,6 +4,13 @@
 
         <h1>{{ .Params.Title }}</h1>
         <h3>{{ dateFormat "Monday, Jan 2, 2006" .Params.Date }} </h3>
+
+        {{ if (isset .Params "itemurl") }}
+        <div class="original_link">
+            <p>链接:<a href="{{ .Params.ItemUrl }}">{{ .Params.ItemUrl }}</a></p>
+        </div>   
+        {{ end }}
+
         {{ if ne (trim .Content " ") "" }}
             <p>
             {{ .Content |emojify }}
@@ -11,12 +18,6 @@
             </div>
         {{ end }}
         
-        {{ if (isset .Params "itemurl") }}
-        <div class="original_link">
-            <p>链接:<a href="{{ .Params.ItemUrl }}">{{ .Params.ItemUrl }}</a></p>
-        </div>   
-        {{ end }}
-
     </article>
     
     {{ partial "prenext.html" . }}

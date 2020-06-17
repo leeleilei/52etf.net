@@ -23,9 +23,27 @@
             ,{{ partial "age.html" . }}
             <!-- todo: 月份和tag放在右侧 -->
     </li>
+    {{ end }}
     
+    <!-- 除了本section下的文件外，还显示Tag等于section的文章，section+tag的混合 -->
+    {{ range .Site.Taxonomies.tags.投资体系 }}
+    <li class="item">
+        {{ if (isset .Params "itemurl") }}
+            <span><a class="item__title" href="{{ .Params.ItemUrl }}">{{ .Title}}</a></span>
+            <span><a class="item__siteurl" href="{{ .Permalink }}">[点评]</a></span> 
+        {{ else }}
+            <span class="item__title"><a class="item__title" href="{{ .Permalink }}">{{ .Title}}</a></span>
+        {{ end }}
+            {{ range .Params.tags }}
+            <a class="item__tag" href='/tags/{{- replace . " " "-" | urlize -}}'>#{{- . -}}</a>
+            {{- end }}
+            ,{{ partial "age.html" . }}
+            <!-- todo: 月份和tag放在右侧 -->
+    </li>
     {{ end }}
 </ol>
+
+
 {{ template "_internal/pagination.html" . }}
 
 {{ partial "footer.html" . }}

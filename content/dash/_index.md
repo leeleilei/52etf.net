@@ -7,6 +7,13 @@ comment: false
 
 ### A股全市场等权重PE分位
 
+**数据来源：集思录**
+
+<div id="wrap" style="border: 0px solid rgb(201, 0, 1); overflow:hidden;"> 
+    <iframe id="frame" scrolling="no" src="https://www.jisilu.cn/data/indicator/" style="border: 0; position: relative; top:-140px; float:left; left:-40px; height: 1150px; width: 1300px; -ms-zoom: 0.76; -moz-transform: scale(0.76); -moz-transform-origin: 0 0; -o-transform: scale(0.76); -o-transform-origin: 0 0; -webkit-transform: scale(0.76); -webkit-transform-origin: 0 0;"> 
+    </iframe> 
+</div>
+
 ### 中国十年期国债收益率
 [![](../images/cn10ybond.png)](../images/cn10ybond.png)
 [![](../images/cn10ybondsh300.png)](../images/cn10ybondsh300.png)

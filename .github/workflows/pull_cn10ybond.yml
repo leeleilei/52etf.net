@@ -29,6 +29,9 @@ jobs:
           # stop the build if there are Python syntax errors or undefined names
           python3 bin/pull_cn10ybondsh300.py content/images/
           python3 bin/pull_cn10ybond.py content/images/
+          python3 bin/pull_chinamacro.py content/images/
+          python3 bin/pull_chinamoney.py content/images/
+          python3 bin/pull_chinaprecious.py content/images/
 
       - uses: EndBug/add-and-commit@v4
         with:

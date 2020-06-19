@@ -1,0 +1,4 @@
+<script src=https://code.jquery.com/jquery-3.5.0.js></script><script>var photos='';function loadImage(){var page=getRndInteger(1,100);$.ajax({url:'https://api.pexels.com/v1/search?query=dog&per_page=60&page='+page,type:'GET',dataType:'json',success:function(data){photos=data.photos;photo=photos.pop();$("#my-image").attr("src",photo.src.portrait);},error:function(){alert('boo!');},beforeSend:setHeader});}
+$('#my-image').on({'click':function(){photo=photos.pop();$('#my-image').attr('src',photo.src.portrait);}});function setHeader(xhr){xhr.setRequestHeader('Authorization','563492ad6f91700001000001807aaa10e98c40dc856034b917e22996');}
+function getRndInteger(min,max){return Math.floor(Math.random()*(max-min+1))+min;}
+$(document).ready(function(){loadImage();});</script><div style=display:grid;height:100%><img id=my-image src=x style=display:block;margin-left:auto;margin-right:auto;max-width:100%;max-height:100vh></div>

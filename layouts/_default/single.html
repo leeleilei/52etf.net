@@ -1,3 +1,7 @@
+{{ if eq .Params.portrait true }}
+{{ .Content }}
+
+{{ else }}
 {{ partial "header.html" . }}
 
     <article class="single markdown-body">
@@ -37,3 +41,6 @@
     {{ end }}
 
     {{ partial "footer.html" . }}
+
+    {{ end }}
+

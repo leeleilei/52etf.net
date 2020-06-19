@@ -1,3 +1,4 @@
+#已被舍弃，暂不用matplotlib开发gauge，作死的节奏
 import os, sys
 import matplotlib
 from matplotlib import cm

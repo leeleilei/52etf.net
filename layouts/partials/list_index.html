@@ -1,6 +1,6 @@
 
 <!-- 用.Site.RegularPages 来过滤所有的常规文件，且不属于media headless section -->
-{{ $paginator := .Paginate (where .Site.RegularPages ".Section" "not in" (slice "media" "xwlb")) }}
+{{ $paginator := .Paginate (where .Site.RegularPages ".Section" "not in" (slice "blog" "media" "xwlb")) }}
 
 <!-- 计算每页开头的list 连续编号 -->
 {{ $start := add (sub (mul $paginator.PageSize $paginator.PageNumber) $paginator.PageSize) 1 }}
@@ -13,7 +13,7 @@
     <li class="item">
         {{ if (isset .Params "itemurl") }}
             <span><a class="item__title" href="{{ .Params.ItemUrl }}">{{ .Title}}</a></span>
-            <span><a class="item__siteurl" href="{{ .Permalink }}">[点评]</a></span> 
+            <span><a class="item__siteurl" href="{{ .Permalink }}">[评论]</a></span> 
         {{ else }}
             <span class="item__title"><a class="item__title" href="{{ .Permalink }}">{{ .Title}}</a></span>
         {{ end }}

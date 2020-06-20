@@ -1,6 +1,5 @@
 
-<article class="single">
-    <strong>推荐目录：</strong>
+<article id="article_tags">
     {{ range .Params.tags }}
     <a class="item__tag" href='/tags/{{- replace . " " "-" | urlize -}}'>#{{- . -}}</a>
     {{ end }}

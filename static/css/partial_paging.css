@@ -1,0 +1,23 @@
+
+ul.pagination {
+    display: flex;
+    list-style: none;
+}
+
+ul.pagination li {
+    margin: 0 .4rem 0 0;
+}
+
+ul.pagination li a {
+    border: 1px solid #d2d2d2;
+    border-radius: 3px;
+    display: block;
+    padding: 0.3rem;
+    text-align: center;
+    text-decoration: none;
+    width: 32px;
+}
+
+ul.pagination li.active a {
+    border-color: orange;
+}

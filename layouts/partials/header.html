@@ -43,18 +43,14 @@
 </head>
 <body>
 <header id="header">
-    <h1><a href="/">{{ .Site.Title }}</a></h1>
     <nav class="sidebar-nav">
+      <ul>
         {{ range .Site.Menus.main }}
-          <a href="{{ .URL }}" title="{{ .Title }}">
+          <li><a href="{{ .URL }}" title="{{ .Title }}">
             {{- .Pre -}}{{- .Name -}}
-            {{- with .Page -}}
-              <span class="date">
-              {{- dateFormat " (2006-01-02)" .Date -}}
-              </span>
-            {{- end -}}
-          </a> |
+          </a></li>
         {{ end }}
+      </ul>
         </nav>
 
 </header>

@@ -4,7 +4,7 @@
 <ol>
     {{ range $key, $value := .Data.Terms.ByCount }}
     <li class="item__tag">
-        <span><a class="item__tag" href="{{ $value.Name | urlize }}"> {{ $value.Name }} ({{ $value.Count }})</a></span>
+        <a class="item__tag" href="{{ $value.Name | urlize }}"> {{ $value.Name }} ({{ $value.Count }})</a>
     </li>
     {{ end }}
 </ol>

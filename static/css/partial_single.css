@@ -1,0 +1,45 @@
+
+article {
+    margin: 2em;
+}
+
+article p {
+    text-align: justify;
+    letter-spacing: 0.1em;
+    line-height: 1.75em;
+}
+
+div#vcomments {
+    margin: 2em;
+    padding: 1em;
+    border: 1px dashed darkgray;
+}
+
+article#markdown-body::after {
+    content: "《全文完》"
+}
+
+article#article_tags {
+    justify-content: center;
+    display: flex;
+    margin: 1em;
+}
+
+article#article_tags a.item__tag {
+    font-size: 1.1em;
+    text-align: center;
+    margin: 0.3em;
+}
+
+
+article#article_nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+article#article_nav a {
+    font-size: 1.1em;
+    text-decoration: none;
+    text-align: center;
+    color: black;
+}

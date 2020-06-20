@@ -5,7 +5,7 @@
 {{ else }}
 {{ partial "header.html" . }}
 
-    <article class="single markdown-body">
+    <article id="markdown-body">
 
         <h1>{{ .Params.Title }}</h1>
         <h3>{{ dateFormat "Monday, Jan 2, 2006" .Params.Date }} </h3>
@@ -24,24 +24,25 @@
         {{ end }}
         
     </article>
-    
+    {{ partial "single_tags.html" . }}
     <div style="text-align: center">
-        <p>关注公众号：<strong>结丹记事本儿</strong>，获取更新提醒和教程</p>
+        
         <img src="/img/weixin.jpg" width=110px; />
+        <p>扫码关注：<strong>结丹记事本儿</strong>，更新有提醒</p>
+    </div>
 
 
     {{ partial "prenext.html" . }}
-</div>
-    {{ partial "single_tags.html" . }}
-
 
     {{ partial "related.html" . }}
+
+
 
     {{ if not (eq .Params.comment false) }}
         {{ partial "comment.html" . }}
     {{ end }}
 
-    {{ partial "footer.html" . }}
-
-    {{ end }}
+    
+{{ partial "footer.html" . }}
+{{ end }}
 

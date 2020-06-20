@@ -1,8 +1,8 @@
-{{ $related := .Site.RegularPages.Related . | first 10 }}
+{{ $related := .Site.RegularPages.Related . | first 5 }}
 {{ with $related }}
 
 <article class="single">
-	<strong>推荐阅读:</strong>
+	<h3>推荐阅读:</h3>
 	<ul>
 		{{ range . }}
 		<li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>

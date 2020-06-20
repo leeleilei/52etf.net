@@ -8,7 +8,7 @@ markup:
     renderer:
       unsafe: true
 
-paginate: 50
+paginate: 15
 
 permalinks:
   /: /:year/:month/:section/:filename/
@@ -41,7 +41,7 @@ menu:
     #pre: <i class="fa fa-user-circle-o" aria-hidden="true"></i>
     url: "/blog/"
     weight: -90    
-  - name: Tags
+  - name: 词云
     #pre: <i class="fa fa-user-circle-o" aria-hidden="true"></i>
     url: /tags/
     weight: -95
@@ -63,3 +63,9 @@ menu:
     #pre: <i class='fa fa-tachometer'></i>
     url: /dash/
     weight: -200
+  - identifier: 'home'
+    name: 首页
+    #pre: <i class='fa fa-tachometer'></i>
+    url: /
+    weight: -220
+  

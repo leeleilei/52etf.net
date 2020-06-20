@@ -1,0 +1,47 @@
+#main ol {
+    margin: 0;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+.item {
+    margin-top: 0.3rem;
+}
+
+.item:first-child{
+    margin-top: 0;
+}
+
+.item a {
+    color: black;
+    text-decoration: none;
+}
+
+a.item__siteurl {
+    color: black;
+    background-color: aquamarine;
+    opacity: 0.8;
+    padding: 2px;
+}
+
+a.item__tag {
+    color: white;
+    font-size: 80%;
+    background-color: gray;
+    padding: 2px;
+    opacity: 0.8;
+    text-decoration: none;
+}
+
+li.item__tag {
+    display: inline-block;
+}
+
+.age {
+    color: rgb(255, 130, 130);
+    font-size: 60%;
+}
+
+main article blockquote {
+    font-size: 1.2em;
+}

@@ -1,0 +1,16 @@
+ul.pagination {
+    padding-left: 16px;
+}
+
+div#tags_list li.item__tag a {
+    font-size: 1.1em;
+}
+
+div#tags_list li.item__tag {
+    margin: 0.3em;
+}
+
+div#tags_list ol {
+    padding: 0; 
+    margin: 1em;
+}

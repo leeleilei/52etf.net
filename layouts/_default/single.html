@@ -1,5 +1,6 @@
 {{ if eq .Params.portrait true }}
-{{ .Content }}
+
+{{ .Content | safeHTML }}
 
 {{ else }}
 {{ partial "header.html" . }}

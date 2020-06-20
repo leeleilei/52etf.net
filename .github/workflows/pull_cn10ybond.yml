@@ -36,7 +36,6 @@ jobs:
           python3 bin/pull_chinamoney.py content/images/
           python3 bin/pull_precious.py content/images/
           python3 bin/pull_pocket_bookmarks.py content/bookmarks/
-          python3 bin/pull_cctv_news.py content/xwlb/
 
       - uses: EndBug/add-and-commit@v4
         with:

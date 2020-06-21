@@ -44,14 +44,14 @@
 <body>
 <header id="header">
     <nav class="topnav" id="myTopNav">
-      <ul>
+      <ol>
         {{ range .Site.Menus.main }}
           <li><a href="{{ .URL }}" title="{{ .Title }}">
             {{- .Pre -}}{{- .Name -}}
           </a></li>
         {{ end }}
-      </ul>
-        </nav>
+      </ol>
+    </nav>
 
 </header>
 <main id="main">

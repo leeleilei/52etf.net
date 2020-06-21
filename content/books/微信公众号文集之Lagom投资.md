@@ -3,7 +3,7 @@
 date: 2020-06-16
 title:  微信公众号文集之Lagom投资
 itemurl: '/tags/lagom投资/'
-tags: [投资体系, lagom投资, 大V文集]
+tags: [lagom投资, 大V文集]
 draft: false
 ---
 

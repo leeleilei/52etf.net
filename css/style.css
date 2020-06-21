@@ -1,7 +1,50 @@
-@import 'partial_layout.css';
+
+
 @import 'partial_header.css';
-@import 'partial_footer.css';
-@import 'partial_paging.css';
 @import 'partial_index.css';
+@import 'partial_footer.css';
+
+@import 'partial_paging.css';
+
 @import 'partial_single.css';
-@import 'partial_list.css';
+@import 'partial_list.css'; 
+
+@import 'partial_layout.css';
+
+
+
+* {
+    box-sizing: border-box;
+}
+
+
+#header,
+#footer,
+#main {
+    margin: 0;
+    padding: 0;
+    width: 800px;
+    margin: auto;
+    border: 1px solid gainsboro;
+}
+
+#header,
+#footer {
+    background-color: gainsboro;
+    opacity: 0.8;
+}
+
+
+@media (max-width: 800px) {
+    #header,
+    #main,
+    #footer {
+        width: 100%;
+    }
+
+    #header li {
+        float: none;
+        border: none;
+    }
+}
+

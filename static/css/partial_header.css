@@ -1,18 +1,14 @@
-#header {
-    display: flex;
-    
-}
-
 #header ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
+    overflow: hidden;
 }
+
 
 #header li {
     float: left;
     text-align: center;
-    justify-content: center;
     border-right: 1px solid whitesmoke;
     padding: 0.2em 0.4em;
 }
@@ -25,3 +21,4 @@
     text-decoration: none;
     padding: 0.2em;
 }
+

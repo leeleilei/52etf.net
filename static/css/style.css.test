@@ -1,0 +1,16 @@
+
+body {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+@media (max-width: 960px) {
+    #header,
+    #main,
+    #footer {
+        width: 100%;
+    }
+}

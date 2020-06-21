@@ -6,6 +6,10 @@ hugo模板将这些文件渲染成页面item呈现出来，效果是reddit的列
 import requests as req
 import sys
 import os
+import jiagu
+import jieba.analyse
+import tomd
+import html2text
 
 try:
     dest = sys.argv[1]
@@ -16,11 +20,9 @@ tpl = '''---
 title:  {title}
 itemurl: {url}
 date: {date}
-tags: [文摘]
+tags: [{tags}]
 draft: false
 ---
-
-{summary}
 '''
 
 # 处理时间
@@ -45,20 +47,34 @@ result = req.post(bookmarks_url, params= params)
 urls = result.json()['list']
 
 for k, item in urls.items():
+    tags = '[]'
     title = item['resolved_title']
     url = item['resolved_url']
-    summary = item['excerpt']
     id = item['resolved_id']
     fname = os.path.abspath(os.path.join(dest, id+'.md'))
 
-    content = tpl.format(
-        title=title,
-        url = url,
-        summary = summary,
-        date = today
-    )
-
     import os
     if title and (not os.path.exists(fname)):
+        html = req.get(url).text
+        #md = tomd.convert(html)
+        h = html2text.HTML2Text()
+        h.ignore_links = True
+        text = h.handle(html)
+        try:
+            summary = '\n\n'.join(jiagu.summarize(text, 10))
+        except IndexError: #英文文档？用回excerpt
+            summary = item['excerpt']
+        
+        if len(title) >= 6:
+            tags = ','.join(jieba.analyse.extract_tags(title, topK=3, allowPOS=['n']))
+
+        content = tpl.format(
+            title=title,
+            url = url,
+            #summary = summary,
+            date = today,
+            tags = tags,
+        )
+
         open(fname, 'w', encoding='utf8').write(content)
-        print('已保存{}'.format(title))
+        print('已保存:{}'.format(title))

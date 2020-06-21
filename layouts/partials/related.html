@@ -3,11 +3,11 @@
 
 <article class="single">
 	<h3>推荐阅读:</h3>
-	<ul>
+	<ol>
 		{{ range . }}
 		<li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
 		{{ end }}
-	</ul>
+	</ol>
 
 </article>
 {{ end }}

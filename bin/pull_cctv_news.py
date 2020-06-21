@@ -51,14 +51,15 @@ if not news.empty:
 
     #content
     import jiagu
-
+    import jieba.analyse
     text = ''.join(news.iloc[:,2].to_list())
     content = '\n\n'.join(jiagu.summarize(text, 10))
 
     # keywords
     text = ''.join(news.iloc[:,2].to_list())
-    text_keywords = jiagu.keywords(text, 5) # 关键词
-    text_keywords = [x for x in text_keywords if len(x)>=2]
+    #text_keywords = jiagu.keywords(text, 5) # 关键词
+    #text_keywords = [x for x in text_keywords if len(x)>=2]
+    text_keywords = jieba.analyse.extract_tags(text, topK=3, allowPOS=['n']) # 关键词
 
     # extend the keywords
     eco_keywords = []

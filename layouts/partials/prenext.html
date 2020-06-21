@@ -1,10 +1,10 @@
 <article id="article_nav">
 {{ with .NextInSection }}
-  <a href="{{ .Permalink }}">新一篇：{{ .Title }}</a>
+  <a href="{{ .Permalink }}"><strong>新一篇：</strong>{{ .Title }}</a>
 {{ end }}
 
 {{ with .PrevInSection }}
-  <a href="{{ .Permalink }}">老一篇：{{ .Title }}</a>   &nbsp;
+  <a href="{{ .Permalink }}"><strong>老一篇：</strong>{{ .Title }}</a>   &nbsp;
 {{ end }}
 
 

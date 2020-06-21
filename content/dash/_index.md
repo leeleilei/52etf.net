@@ -10,7 +10,7 @@ comment: false
 **数据来源：集思录**
 
 <div id="wrap" style="border: 0px solid rgb(201, 0, 1); overflow:hidden;"> 
-    <iframe id="frame" scrolling="yes" src="https://www.jisilu.cn/data/indicator/" style="border: 0; position: relative; top:-140px; float:right; left: 340px; height: 1150px; width: 1300px; -ms-zoom: 0.76; -moz-transform: scale(0.76); -moz-transform-origin: 0 0; -o-transform: scale(0.76); -o-transform-origin: 0 0; -webkit-transform: scale(0.76); -webkit-transform-origin: 0 0; overflow:hidden;"> 
+    <iframe id="frame" scrolling="no" src="https://www.jisilu.cn/data/indicator/" style="border: 0; position: relative; top:-140px; float:right; left: 340px; height: 1150px; width: 1300px; -ms-zoom: 0.76; -moz-transform: scale(0.76); -moz-transform-origin: 0 0; -o-transform: scale(0.76); -o-transform-origin: 0 0; -webkit-transform: scale(0.76); -webkit-transform-origin: 0 0; overflow:hidden;"> 
     </iframe> 
 </div>
 

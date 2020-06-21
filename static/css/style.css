@@ -9,8 +9,6 @@
 @import 'partial_single.css';
 @import 'partial_list.css'; 
 
-@import 'partial_layout.css';
-
 
 
 * {
@@ -45,6 +43,7 @@
     #header li {
         float: none;
         border: none;
+        display: block;
     }
 }
 

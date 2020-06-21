@@ -15,8 +15,14 @@ div#vcomments {
     border: 1px dashed darkgray;
 }
 
+
+article#markdown-body img {
+    width: 100%;
+    object-fit: contain;
+}
+
 article#markdown-body::after {
-    content: "《全文完》"
+    content: ""
 }
 
 article#article_tags {
@@ -40,9 +46,12 @@ article#article_nav {
     justify-content: space-between;
 }
 
+
 article#article_nav a {
-    font-size: 1.1em;
+    font-size: 1em;
     text-decoration: none;
-    text-align: center;
+    text-align: left;
     color: black;
+    margin: 0;
+    padding-right: 2em;
 }

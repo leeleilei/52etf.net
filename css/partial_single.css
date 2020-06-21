@@ -31,7 +31,10 @@ article#article_tags a.item__tag {
     margin: 0.3em;
 }
 
-
+article#markdown-body img {
+    object-fit: contain;
+    width: 100%;
+}
 article#article_nav {
     display: flex;
     justify-content: space-between;

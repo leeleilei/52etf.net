@@ -8,7 +8,6 @@ import sys
 import os
 import jiagu
 import jieba.analyse
-import tomd
 import html2text
 
 try:

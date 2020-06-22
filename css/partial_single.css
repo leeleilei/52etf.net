@@ -1,13 +1,10 @@
 
 article {
     margin: 2em;
-}
-
-article p {
-    text-align: justify;
     letter-spacing: 0.1em;
     line-height: 1.75em;
 }
+
 
 div#vcomments {
     margin: 2em;
@@ -19,10 +16,6 @@ div#vcomments {
 article#markdown-body img {
     width: 100%;
     object-fit: contain;
-}
-
-article#markdown-body::after {
-    content: ""
 }
 
 article#article_tags {
@@ -41,6 +34,7 @@ article#markdown-body img {
     object-fit: contain;
     width: 100%;
 }
+
 article#article_nav {
     display: flex;
     justify-content: space-between;
@@ -53,5 +47,4 @@ article#article_nav a {
     text-align: left;
     color: black;
     margin: 0;
-    padding-right: 2em;
 }

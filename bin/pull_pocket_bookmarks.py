@@ -37,8 +37,7 @@ today = datetime.now().astimezone(china_tz).isoformat()
 params = {
             'access_token': '04bb4c80-b441-5012-8e75-c397af',
             'consumer_key': '92001-aec2193a4a3516efe355ebfb',
-            'tag': '52etf',
-            'count': 20,}
+            'tag': '52etf',}
 
 # 请求地址
 bookmarks_url = "https://getpocket.com/v3/get"
@@ -47,22 +46,21 @@ urls = result.json()['list']
 
 for k, item in urls.items():
     tags = '[]'
-    title = item['resolved_title']
-    url = item['resolved_url']
-    id = item['resolved_id']
-    fname = os.path.abspath(os.path.join(dest, id+'.md'))
+    title = item['resolved_title'] or item['given_title']
+    url = item['resolved_url'] or item['given_url']
+    fname = os.path.abspath(os.path.join(dest, k+'.md'))
 
     import os
     if title and (not os.path.exists(fname)):
-        html = req.get(url).text
-        #md = tomd.convert(html)
-        h = html2text.HTML2Text()
-        h.ignore_links = True
-        text = h.handle(html)
-        try:
-            summary = '\n\n'.join(jiagu.summarize(text, 10))
-        except IndexError: #英文文档？用回excerpt
-            summary = item['excerpt']
+        # html = req.get(url).text
+        # #md = tomd.convert(html)
+        # h = html2text.HTML2Text()
+        # h.ignore_links = True
+        # text = h.handle(html)
+        # try:
+        #     summary = '\n\n'.join(jiagu.summarize(text, 10))
+        # except IndexError: #英文文档？用回excerpt
+        #     summary = item['excerpt']
         
         if len(title) >= 6:
             tags = ','.join(jieba.analyse.extract_tags(title, topK=3, allowPOS=['n']))

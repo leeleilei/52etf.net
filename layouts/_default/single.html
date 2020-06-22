@@ -21,16 +21,16 @@
         
     </article>
     {{ partial "single_tags.html" . }}
-    <div style="text-align: center">
-        <img src="/img/weixin_banner.png" width=40%; />
-    </div>
+
 
 
     {{ partial "prenext.html" . }}
     {{ partial "related.html" . }}
 
 
-
+    <div style="text-align: center">
+        <img src="/img/weixin_banner.png" width=40%; />
+    </div>
     {{ if not (eq .Params.comment false) }}
         {{ partial "comment.html" . }}
     {{ end }}

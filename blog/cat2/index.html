@@ -1,0 +1,6 @@
+<style>img{display:block;margin-left:auto;margin-right:auto;max-width:100%;max-height:96vh;box-shadow:0 4px 8px 0 rgba(0,0,0,.2),0 6px 20px 0 rgba(0,0,0,.19)}</style><p><img id=my-image src></p><script src=https://code.jquery.com/jquery-3.5.0.js></script><script>var photos='';function setHeader(xhr){xhr.setRequestHeader('Authorization','563492ad6f91700001000001807aaa10e98c40dc856034b917e22996');}
+function getRndInteger(min,max){return Math.floor(Math.random()*(max-min+1))+min;}
+function loadImage(){var page=getRndInteger(1,90);$.ajax({url:'https://api.pexels.com/v1/search?query=cat&per_page=60&page='+page,type:'GET',dataType:'json',success:function(data){photos=data.photos;if(photos.length<1){loadImage();}
+photo=photos.pop();$("#my-image").attr("src",photo.src.landscape);},error:function(){alert('接口访问超限制!');},beforeSend:setHeader});}
+$(document).ready(function(){loadImage();$('#my-image').on({'click touchstart':function(){photo=photos.pop();if(photos.length<1){loadImage();}
+$('#my-image').attr('src',photo.src.portrait);}});});</script><blockquote></blockquote>

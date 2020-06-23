@@ -1,7 +1,7 @@
 # This workflow will install Python dependencies, run tests and lint with a single version of Python
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
 
-name: 更新
+name: 52etf内容更新
 
 on:
   push:
@@ -36,6 +36,7 @@ jobs:
           python3 bin/pull_chinamoney.py content/images/
           python3 bin/pull_precious.py content/images/
           python3 bin/pull_pocket_bookmarks.py content/bookmarks/
+          python3 bin/pull_cctv_news.py content/xwlb/
 
       - uses: EndBug/add-and-commit@v4
         with:

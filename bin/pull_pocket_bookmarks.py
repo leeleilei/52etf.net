@@ -47,7 +47,7 @@ urls = result.json()['list']
 for k, item in urls.items():
     tags = '[]'
     title = item['resolved_title'] or item['given_title']
-    url = item['resolved_url'] or item['given_url']
+    url = item['given_url'] or item['given_url']
     fname = os.path.abspath(os.path.join(dest, k+'.md'))
 
     import os

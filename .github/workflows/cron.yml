@@ -37,7 +37,9 @@ jobs:
           python3 bin/pull_precious.py content/images/
           python3 bin/pull_pocket_bookmarks.py content/bookmarks/
           python3 bin/pull_cctv_news.py content/xwlb/
-
+          python3 bin/pull_precious_gov.py content/images/
+          python3 bin/pull_rongz.py content/images/
+          
       - uses: EndBug/add-and-commit@v4
         with:
           add: '.'

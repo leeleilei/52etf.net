@@ -14,6 +14,10 @@ comment: false
     </iframe> 
 </div>
 
+### 沪深两市融资余额
+[![](../images/rongzi.png)](../images/rongzi.png)
+
+
 ### 中国十年期国债收益率
 [![](../images/cn10ybond.png)](../images/cn10ybond.png)
 [![](../images/cn10ybondsh300.png)](../images/cn10ybondsh300.png)
@@ -24,15 +28,49 @@ comment: false
 ### 全球最大贵金属ETF基金持仓报告
 [![](../images/goldsilver.png)](../images/goldsilver.png)
 
+### 各国央行黄金存储总量
+[![](../images/globalgovgold.png)](../images/globalgovgold.png)
+
 ### 中国M2货币
 [![](../images/chinamoney.png)](../images/chinamoney.png)
 
+### VIX 恐慌指数（标普波动率指数）
+https://cn.investing.com/indices/volatility-s-p-500-historical-data
+
 ### 美联储利率周期
+https://fred.stlouisfed.org/series/DGS10/?utm_source=fred-glance-widget&utm_medium=widget&utm_campaign=fred-glance-widget#0
 
 ### 美联储负债表
+https://fred.stlouisfed.org/series/WALCL
+
 ### 美国公司债务
-### 各国央行黄金存储总量
+https://fred.stlouisfed.org/series/ASTDSL
+https://fred.stlouisfed.org/series/FGTSL
+https://fred.stlouisfed.org/series/ASCFBL
+
 ### A股交易总额
+stock_sse_summary_df = ak.stock_sse_summary()
+
 ### A股市值和GDP比值
+stock_sse_summary_df = ak.stock_sse_summary()
+/
+GDP
+
 ### 主要行业PE分位对比图
+1. 中证全指
+2. 沪深300
+3. 医药
+4. 传媒
+5. 环保
+6. 通信
+7. 科技
+8. 证券
+9. 银行
+10. 基建
+11. 保险
+12. 可选消费
+13. 必选消费
+14. ... ...
+
 ### 行业PE-TTM/PB数据下载
+[TODO] 下载链接

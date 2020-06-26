@@ -15,7 +15,7 @@ try:
 except IndexError:
     dest = 'content/bookmarks/'
 
-tpl = '''---
+tpl_posts = '''---
 title:  {title}
 itemurl: {url}
 date: {date}
@@ -33,6 +33,7 @@ today = datetime.now().astimezone(china_tz).isoformat()
 
 # pocket 请求头
 # count=20, run this every 30 minutes, so 20 is fair enough to capture all udpate
+
 
 params = {
             'access_token': '04bb4c80-b441-5012-8e75-c397af',
@@ -65,10 +66,53 @@ for k, item in urls.items():
         if len(title) >= 6:
             tags = ','.join(jieba.analyse.extract_tags(title, topK=3, allowPOS=['n']))
 
-        content = tpl.format(
+        content = tpl_posts.format(
             title=title,
             url = url,
             #summary = summary,
+            date = today,
+            tags = tags,
+        )
+
+        open(fname, 'w', encoding='utf8').write(content)
+        print('已保存:{}'.format(title))
+
+
+#### below code is so ugly and I don't want to look at it again
+#
+tpl_blog = '''---
+title:  {title}
+itemurl: {url}
+date: {date}
+tags: [{tags}]
+draft: false
+---
+'''
+params = {
+            'access_token': '04bb4c80-b441-5012-8e75-c397af',
+            'consumer_key': '92001-aec2193a4a3516efe355ebfb',
+            'tag': 'blog',}
+
+dest = 'content/blog/'
+# 请求地址
+bookmarks_url = "https://getpocket.com/v3/get"
+result = req.post(bookmarks_url, params= params)
+urls = result.json()['list']
+
+for k, item in urls.items():
+    tags = '[]'
+    title = item['resolved_title'] or item['given_title']
+    url = item['given_url'] or item['given_url']
+    fname = os.path.abspath(os.path.join(dest, k+'.md'))
+
+    import os
+    if title and (not os.path.exists(fname)):
+        if len(title) >= 6:
+            tags = ','.join(jieba.analyse.extract_tags(title, topK=3, allowPOS=['n']))
+
+        content = tpl_blog.format(
+            title=title,
+            url = url,
             date = today,
             tags = tags,
         )

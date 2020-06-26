@@ -35,7 +35,7 @@ ax1.set_ylabel(ylabel='持仓量(吨)', fontproperties=fontprop)
 for tick in ax1.get_xticklabels():
         tick.set_rotation(90)
         tick.set_visible(False)
- for tick in ax1.get_xticklabels()[::10]:
+for tick in ax1.get_xticklabels()[::10]:
          tick.set_visible(True)
 
 

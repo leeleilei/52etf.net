@@ -48,6 +48,7 @@ ax1.annotate('最新{:.2f}'.format(latest_bond), xy=(latest_date, latest_bond), 
              arrowprops=dict(arrowstyle='->', connectionstyle="arc3,rad=.2"),
             fontproperties=fontprop)
 ax1.legend(loc="upper left")
+fig.legend(loc="upper left", prop=fontprop, bbox_to_anchor=(0,1), bbox_transform=ax.transAxes)
 
 
 from datetime import datetime

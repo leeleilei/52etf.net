@@ -58,6 +58,8 @@ df2 = ak.macro_china_m2_yearly()
 ax2.plot(df2, label="M2年率")
 ax2.legend(loc="upper left")
 
+fig.legend(loc="upper left", prop=fontprop, bbox_to_anchor=(0,1), bbox_transform=ax.transAxes)
+
 from datetime import datetime
 updated_at = datetime.now().strftime('%Y-%m-%d')
 fig.suptitle('中国宏观货币\n公众号：结丹记事本儿,更新于{}'.format(updated_at), fontproperties=fontprop, fontsize=16)

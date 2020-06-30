@@ -77,7 +77,7 @@ ax2.annotate('最新{:.2f}'.format(latest_bond), xy=(latest_date, latest_bond), 
              arrowprops=dict(arrowstyle='->', connectionstyle="arc3,rad=.2"),
             fontproperties=fontprop)
 
-fig.legend(loc="upper left", prop=fontprop, bbox_to_anchor=(0,1), bbox_transform=ax.transAxes)
+fig.legend(loc="upper left", prop=fontprop, bbox_to_anchor=(0,1))
 
 from datetime import datetime
 updated_at = datetime.now().strftime('%Y-%m-%d')

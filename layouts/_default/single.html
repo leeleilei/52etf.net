@@ -12,7 +12,9 @@
         {{ if (isset .Params "itemurl") }}
         <a href="{{ .Params.ItemUrl }}">原文链接</a>
         {{ end }}
+        {{ if .Params.Date }}
         {{ dateFormat "Jan 2, 2006" .Params.Date }}
+        {{ end }}
         </p>
 
         {{ if ne (trim .Content " ") "" }}

@@ -1,3 +1,12 @@
+---
+display: false
+date: 2020-03-01
+title:  重构Flask目录
+categories: [Python]
+tags: [Python]
+draft: false
+---
+
 # 摘要
 随着在已有程序上扩充功能，模板、视图等文件会越来越多，给管理和命名空间带来不少麻烦。本文介绍了如何重构已有的程序目录，使她更适应于中型flask应用开发，为功能扩展做好准备。
 

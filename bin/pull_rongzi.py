@@ -49,7 +49,7 @@ df2.index = pd.to_datetime(df2.index)
 ax2.plot(df2.index, df2['融资融券余额(元)'].apply(lambda x: float(x)), label="上海余额(元)")
 ax2.legend(loc="upper left")
 
-fig.legend(loc="upper left", prop=fontprop, bbox_to_anchor=(0,1), bbox_transform=ax.transAxes)
+fig.legend(loc="upper left", prop=fontprop, bbox_to_anchor=(0,1))
 
 from datetime import datetime
 updated_at = datetime.now().strftime('%Y-%m-%d')

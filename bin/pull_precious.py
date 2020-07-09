@@ -43,7 +43,7 @@ for ax in [ax1, ax2]:
 # 数据是Series
 df = ak.macro_cons_gold_volume()
 import matplotlib.dates as mdates
-df = df.map(float)
+#df = df.map(float)
 
 ax1.plot(df, label="全球最大黄金ETF SPDR 持仓量")
 ax1.set_ylabel(ylabel='持仓量(吨)', fontproperties=fontprop)
@@ -62,7 +62,7 @@ ax1.legend(loc="upper left")
 # 白银
 df2 = ak.macro_cons_silver_volume()
 import matplotlib.dates as mdates
-df2 = df2.map(float)
+#df2 = df2.map(float)
 ax2.plot(df2, color='r', label="全球最大白银ETF–iShares Silver Trust持仓量")
 
 

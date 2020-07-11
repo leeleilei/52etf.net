@@ -1,3 +1,4 @@
+#! https://zhuanlan.zhihu.com/p/158768948
 ---
 display: false
 date: 2020-06-13
@@ -6,6 +7,7 @@ categories: [Python]
 tags: [matplotlib]
 draft: false
 ---
+**转载请注明微*信公众号：结丹记事本儿，关注有惊喜哦！**
 
 印象中放弃过这个库数次，改用了plotly和altair的html类型作图。后来发现还是matplotlib要稳定灵活，兼容Qt程序方面也是最好的。
 
@@ -22,6 +24,7 @@ Do This
 matplotlib.rcParams['font.sans-serif']=['SimHei']   # 用黑体显示中文
 matplotlib.rcParams['axes.unicode_minus']=False     # 正常显示负号
 ```
+**转载请注明微*信公众号：结丹记事本儿，关注有惊喜哦！**
 
 或者 Do This 单独挂载字体
 ```python
@@ -59,6 +62,7 @@ fig, [ax1, ax2, ax3] = plt.subplot(1,3)
 fig, ax1, ax2, ax3 = plot.subplot(1,3)
 ```
 因为tuple里面是(figure, axes)的结构，axes可以是一个或者n维的list
+**转载请注明微*信公众号：结丹记事本儿，关注有惊喜哦！**
 
 ## plot
 plot()本身是个作图函数(y, x, type, label)，跟以上概念没有关联。
@@ -96,6 +100,7 @@ axes图上x,y axis的major_ticker和minor_ticker刻度值
    ```python
    mdates.DateFormatter('%Y%m%d')
    ```
+**转载请注明微*信公众号：结丹记事本儿，关注有惊喜哦！**
 
 ## 日期的合并
 除了shared坐标轴外，我们通常会遇到两个数据合集，然后共享一个时间轴，例如K线和成交量，需要画两个图，但是共享一个坐标轴。
@@ -131,3 +136,4 @@ ax2 = ax.twinx()
 
 掌握了以上几个关键的matplotlib概念，至少可以延期你的放弃年头大概个把月（狗头）。
 
+**转载请注明微*信公众号：结丹记事本儿，关注有惊喜哦！**

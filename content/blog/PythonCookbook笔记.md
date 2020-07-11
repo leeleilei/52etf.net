@@ -1,9 +1,12 @@
+#! https://zhuanlan.zhihu.com/p/158765587
 ---
 title:  "PythonCookbook笔记"
 date: 2020-06-25T10:53:40+08:00
 tags: [Python,笔记]
 comment: true
 ---
+
+**转载请注明微*信公众号：结丹记事本儿，关注有惊喜哦！**
 
 Python Cookbook是一本类参考书，非常适合作为案头参考。
 
@@ -55,6 +58,8 @@ Python Cookbook是一本类参考书，非常适合作为案头参考。
 7. yieldfrom 递归生成器
 8. heapq.merge(seq1, seq2) 递归合并的序列，开支非常小
 9. 迭代器替代while无限循环，非常pythonic的用法, for chunk in iter(lambda: f.read(10), b''), iter用一个callable和结尾，创建一个可结束的（退出机制）的迭代器
+
+**转载请注明微*信公众号：结丹记事本儿，关注有惊喜哦！**
 
 ## 文件
 1. print('hi', file=f) 可以将输出重定向，更轻量级的logger
@@ -109,6 +114,7 @@ Python Cookbook是一本类参考书，非常适合作为案头参考。
 4. 通过字符串导入包, importlib.import_module('math') 类似动态创建类type.new_class(cls, name, bases, *, arg1=x...)
 5. 整体来看，理解了命名控件和__init__原理，就基本解决了99的导入问题
 
+**转载请注明微*信公众号：结丹记事本儿，关注有惊喜哦！**
 
 ## 网络
 1. ipaddress处理一些关于IP地址的运算，可以用作开发小工具

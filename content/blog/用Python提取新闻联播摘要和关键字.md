@@ -1,3 +1,4 @@
+#! https://zhuanlan.zhihu.com/p/158769054
 ---
 display: false
 date: 2020-06-11
@@ -6,6 +7,7 @@ categories: [Python]
 tags: [摘要,CCTV,jieba,jiagu]
 draft: false
 ---
+**转载请注明微*信公众号：结丹记事本儿，关注有惊喜哦！**
 
 ![20200612110411](https://cdn.jsdelivr.net/gh/leeleilei/leeleilei.github.io/assets/images/20200612110411.png)
 
@@ -39,6 +41,7 @@ Github全家桶的Action功能（真香啊），可以完整打开一个docker�
 
 ~~本地定时git pull，启动docker运行hugo生成内容。~~
 
+**转载请注明微*信公众号：结丹记事本儿，关注有惊喜哦！**
 
 ## 关键代码
 
@@ -118,6 +121,7 @@ open(title+'.md', 'w').write(md)
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
 
 name: 更新新闻联播
+**转载请注明微*信公众号：结丹记事本儿，关注有惊喜哦！**
 
 on:
 #  push:
@@ -191,6 +195,7 @@ jobs:
 
 gh-pages是action模板里的配置，需要切换到对应gh-pages分支
 为了避免本地文件污染，同步前git reset先自毁本地更新
+**转载请注明微*信公众号：结丹记事本儿，关注有惊喜哦！**
 
 ```
 */1 * * * * cd /home/ali/52etf;git checkout gh-pages;git fetch --all;git reset --hard origin/gh-pages;git pull

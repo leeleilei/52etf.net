@@ -1,18 +1,21 @@
 
 
 @import 'partial_header.css';
-@import 'partial_index.css';
+
 @import 'partial_footer.css';
 
 @import 'partial_paging.css';
 
 @import 'partial_single.css';
+
 @import 'partial_list.css'; 
+@import 'partial_index.css';
 
-
+@import 'github-markdown.min.css';
 
 * {
     box-sizing: border-box;
+
 }
 
 
@@ -23,7 +26,9 @@
     padding: 0;
     width: 800px;
     margin: auto;
-    border: 1px solid gainsboro;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    letter-spacing: 2px;
+    line-height: 1.75em;    
 }
 
 #header,

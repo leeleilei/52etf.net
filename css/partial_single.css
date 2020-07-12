@@ -5,6 +5,15 @@ article {
     line-height: 1.75em;
 }
 
+span.article_date {
+    display: block;
+    float: right;
+    font-size: 60%;
+}
+
+#article_link {
+    display: block;
+}
 
 div#vcomments {
     margin: 2em;

@@ -62,7 +62,10 @@ ax1.legend(loc="upper left")
 # 白银
 df2 = ak.macro_cons_silver_volume()
 import matplotlib.dates as mdates
-df2 = df2.map(float)
+try:
+        df2 = df2.map(float)
+except AttributeError:
+        df2 = df2['silver_volume'].map(float)
 ax2.plot(df2, color='r', label="全球最大白银ETF–iShares Silver Trust持仓量")
 
 

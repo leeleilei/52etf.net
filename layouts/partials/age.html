@@ -10,14 +10,7 @@
 <span class="age yesterday">昨日</span>
 
 <!-- Posted in the last 31 days -->
-{{ else if lt $ageDays 31 }}
-
-    <span class="age withinmonth">{{ $ageDays }}{{ cond (eq $ageDays 1) "天" "天"}}前</span>
-
-<!-- Posted month(s) ago -->
-{{ else if lt $ageDays 93 }}
-<span class="age withinthreemonth">{{ $ageMonths }}{{ cond (eq $ageMonths 1) "个月" "个月" }}前</span>
 {{ else }}
-<span class="age old">{{ dateFormat "2006-01-02" .PublishDate }}</span>
+    <span class="age withinmonth">{{ $ageDays }}{{ cond (eq $ageDays 1) "天" "天"}}前</span>
 {{ end }}
-<!-- https://kodify.net/hugo/date-time/relative-age-hugo/ -->
+

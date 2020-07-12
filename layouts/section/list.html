@@ -1,9 +1,13 @@
 {{ partial "header.html" . }}
-<article class="list markdown-body">
+
+{{ if ne (trim .Content " ") "" }}
+
+<article class="list-header markdown-body">
     <!-- "{{.Content}}" pulls from the markdown content of the corresponding _index.md -->
     {{.Content | safeHTML }}
 </article>
 
+{{ end }}  
 {{ partial "list.html" . }}
 
 {{ if (eq .Params.comment true) }}

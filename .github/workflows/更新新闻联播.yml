@@ -1,0 +1,63 @@
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
+
+name: 更新新闻联播
+
+on:
+  schedule:
+    - cron: "* */1 * * *"
+  watch:
+    types: started      
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install tushare jiagu 
+          if [ -f bin/requirements.txt ]; then pip install -r bin/requirements.txt; fi
+
+      - name: Main
+        run: |
+          # stop the build if there are Python syntax errors or undefined names
+          python3 bin/pull_cctv_news.py content/xwlb/
+
+
+      - uses: EndBug/add-and-commit@v4
+        with:
+          add: '.'
+          force: true
+          author_name: 52etf.net
+          author_email: admin@52etf.net
+          message: "日更一卒"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/checkout@v2
+        with:
+          submodules: true  # Fetch Hugo themes (true OR recursive)
+          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: 'latest'
+          # extended: true
+
+      - name: Build
+        run: hugo --minify
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          PUBLISH_BRANCH: gh-pages
+          publish_dir: ./public

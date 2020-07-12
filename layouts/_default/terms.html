@@ -1,13 +1,11 @@
 {{ partial "header.html" . }}
 
 <div id="tags_list">
-<ol>
     {{ range $key, $value := .Data.Terms.ByCount }}
-    <li class="item__tag">
+    <span class="item__tag">
         <a class="item__tag" href="{{ $value.Name | urlize }}"> {{ $value.Name }} ({{ $value.Count }})</a>
-    </li>
+    </span>
     {{ end }}
-</ol>
 </div>
 
 {{ partial "footer.html" . }}

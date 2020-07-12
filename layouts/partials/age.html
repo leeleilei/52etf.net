@@ -5,10 +5,6 @@
 <!-- Posted today -->
 {{ if eq $ageDays 0 }}
     <span class="age newest">最新</span>
-{{ else if lt $ageDays 1 }}
-
-<span class="age yesterday">昨日</span>
-
 <!-- Posted in the last 31 days -->
 {{ else }}
     <span class="age withinmonth">{{ $ageDays }}{{ cond (eq $ageDays 1) "天" "天"}}前</span>

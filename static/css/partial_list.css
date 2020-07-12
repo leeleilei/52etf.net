@@ -2,15 +2,14 @@ ul.pagination {
     padding-left: 16px;
 }
 
-div#tags_list li.item__tag a {
-    font-size: 1.1em;
+div#tags_list {
+    margin: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
-div#tags_list li.item__tag {
-    margin: 0.3em;
-}
-
-div#tags_list ol {
-    padding: 0; 
-    margin: 1em;
+article.list-header blockquote {
+    text-align: right;
+    border: none;
+    border-right: 5px solid lightgray;
 }

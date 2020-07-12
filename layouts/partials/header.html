@@ -1,9 +1,47 @@
+{{ $description := "" }}
+{{ if .IsPage }}
+  {{ if .Params.Description }}
+    {{ $description = .Params.Description }}
+  {{ else }}
+    {{ $description = .Summary }}
+  {{ end }}
+
+{{ else if .Params.Description }}
+  {{ $description = .Params.Description }}
+
+{{ else }}
+  {{ $description = .Site.Params.Description }}
+
+{{ end }}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="description" content="{{ $description }}" />
+    <meta name="KEYWORDS" content="{{ .Params.tags }}" />
+    <meta name="robots" content="index,follow" /> 
+    <meta name="googlebot" content="index,follow" />
+    <base href="{{ .Permalink }}">
+
+    <meta property="og:title" content="{{ .Title }} | {{ .Site.Title }}" />
+    <meta name="twitter:title" content="{{ .Title }} | {{ .Site.Title }}" />
+    <meta itemprop="name" content="{{ .Title }} | {{ .Site.Title }}" />
+    <meta name="application-name" content="{{ .Title }} | {{ .Site.Title }}" />
+    <meta property="og:site_name" content="{{ .Site.Params.sitename }}" />
+
+    <meta name="description" content="{{ $description }}" />
+    <meta itemprop="description" content="{{ $description }}" />
+    <meta property="og:description" content="{{ $description }}" />
+    <meta name="twitter:description" content="{{ $description }}" />    
+    
+    <meta name="url" content="{{ .Permalink }}" />
+    <meta name="twitter:url" content="{{ .Permalink }}" /> 
+    <meta property="og:url" content="{{ .Permalink }}" />
+    
+    <link rel="canonical" href="{{ .Permalink }}" itemprop="url" /> 
     <link id="favicon" rel="icon" type="image/x-icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="{{ "css/style.css"  | relURL}}">
     <link rel="stylesheet" href="{{ "css/github-markdown.min.css" |relURL }}">
@@ -11,18 +49,6 @@
 
     <!-- 解决微信图片不能显示的问题 -->
     <meta name="referrer" content="no-referrer">
-
-    <script src="https://unpkg.com/zooming/build/zooming.min.js"></script>
-    <script>
-      // Listen to images after DOM content is fully loaded
-      document.addEventListener('DOMContentLoaded', function () {
-        new Zooming({
-          // options...
-          scaleExtra: 0.6,
-        }).listen('.img-zoomable')
-      })
-    </script>
-
      <title>{{ .Site.Title }}</title>
 </head>
 <body>

@@ -10,7 +10,7 @@
     <li class="item">
         {{ if (isset .Params "itemurl") }}
             <span><a class="item__title" href="{{ .Params.ItemUrl }}">{{ .Title}}</a></span>
-            <span><a class="item__siteurl" href="{{ .Permalink }}">[点评]</a></span> 
+            <span><a class="item_commentme" href="{{ .Permalink }}">[点评]</a></span> 
         {{ else }}
             <span class="item__title"><a class="item__title" href="{{ .Permalink }}">{{ .Title}}</a></span>
         {{ end }}
@@ -27,7 +27,7 @@
     <li class="item">
         {{ if (isset .Params "itemurl") }}
             <span><a class="item__title" href="{{ .Params.ItemUrl }}">{{ .Title}}</a></span>
-            <span><a class="item__siteurl" href="{{ .Permalink }}">[点评]</a></span> 
+            <span><a class="item_commentme" href="{{ .Permalink }}">[点评]</a></span> 
         {{ else }}
             <span class="item__title"><a class="item__title" href="{{ .Permalink }}">{{ .Title}}</a></span>
         {{ end }}

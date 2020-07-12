@@ -1,11 +1,14 @@
 # This workflow will install Python dependencies, run tests and lint with a single version of Python
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
 
-name: 更新新闻联播
+name: 更新中国货币M2
 
 on:
+  push:
+      branches:
+        - master
   schedule:
-    - cron: "* */4 * * *"
+    - cron: "* */1 * * *"
   watch:
     types: started      
 
@@ -22,14 +25,12 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install tushare jiagu 
           if [ -f bin/requirements.txt ]; then pip install -r bin/requirements.txt; fi
 
       - name: Main
         run: |
-          # stop the build if there are Python syntax errors or undefined names
-          python3 bin/pull_cctv_news.py content/xwlb/
 
+          python3 bin/pull_chinamoney.py content/images/
 
       - uses: EndBug/add-and-commit@v4
         with:

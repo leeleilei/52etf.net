@@ -2,23 +2,34 @@
 
 {{ $start := add (sub (mul $paginator.PageSize $paginator.PageNumber) $paginator.PageSize) 1 }}
 
-<ol start={{ $start }}>
-
     {{ range $paginator.Pages }}
-    <li class="item">
+    <div class="item">
+        <div class="item_header">
         {{ if (isset .Params "itemurl") }}
             <span><a class="item__title" href="{{ .Params.ItemUrl }}">{{ .Title}}</a></span>
-            <span><a class="item__siteurl" href="{{ .Permalink }}">[点评]</a></span> 
+            <span><a class="item_commentme" href="{{ .Permalink }}">[点评]</a></span> 
         {{ else }}
             <span class="item__title"><a class="item__title" href="{{ .Permalink }}">{{ .Title}}</a></span>
         {{ end }}
+        </div>
+
+
+        <div class="item_summary">
+            {{ if ne (trim .Content " ") "" }}
+                {{ .Summary }} ...
+            {{ end }}    
+        </div>
+        
+        <div class="item_tag">
             {{ range .Params.tags }}
-            <a class="item__tag" href='/tags/{{- replace . " " "-" | urlize -}}'>#{{- . -}}</a>
+            <span class="item__tag"><a class="item__tag" href='/tags/{{- replace . " " "-" | urlize -}}'>#{{- . -}}</a></span>
             {{- end }}
-            ,{{ partial "age.html" . }}
+            {{ partial "age.html" . }}
             <!-- todo: 月份和tag放在右侧 -->
-    </li>
+        </div>
+        
+    </div>
+
     {{ end }}
-    </ol>
 
 {{ template "_internal/pagination.html" . }}

@@ -5,7 +5,7 @@ name: 更新新闻联播
 
 on:
   schedule:
-    - cron: "* */1 * * *"
+    - cron: "*/17 * * * *"
   watch:
     types: started      
 

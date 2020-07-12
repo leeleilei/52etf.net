@@ -27,8 +27,8 @@
     width: 800px;
     margin: auto;
     border: 1px solid rgba(0, 0, 0, 0.05);
-    letter-spacing: 2px;
-    line-height: 1.75em;    
+    letter-spacing: 1px;
+    line-height: 1.5em;    
 }
 
 #header,

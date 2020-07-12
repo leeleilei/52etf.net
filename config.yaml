@@ -46,13 +46,13 @@ menu:
     url: /tags/
     weight: -95
   - identifier: 'books'
-    name: 投资书单
+    name: 书单
     #pre: <i class="fa fa-book" aria-hidden="true"></i>
     url: /books/
     weight: -150
   - name: 精选基金
     #pre: <i class="fa fa-diamond" aria-hidden="true"></i>
-    url: /funds/
+    url: /tags/精选基金/
     weight: -140
   - identifier: 'dash'
     name: 市场仪表盘

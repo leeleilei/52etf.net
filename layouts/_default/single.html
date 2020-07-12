@@ -7,13 +7,10 @@
 
     <article class="markdown-body">
 
-        <h1>{{ .Params.Title }}
-
-            {{ if .Params.Date }}
-            <span class="article_date">{{ dateFormat "Jan 2, 2006" .Params.Date }}</span>
-            {{ end }}
-        </h1>
-
+        <h1>{{ .Params.Title }}</h1>
+        {{ if .Params.Date }}
+        <span class="article_date">{{ dateFormat "Jan 2, 2006" .Params.Date }}</span>
+        {{ end }}
         {{ if (isset .Params "itemurl") }}
         <a id="article_link" href="{{ .Params.ItemUrl }}">点击查看原文</a>
         {{ end }}

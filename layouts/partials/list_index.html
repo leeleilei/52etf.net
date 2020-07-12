@@ -12,7 +12,7 @@
         <div class="item_header">
         {{ if (isset .Params "itemurl") }}
             <span><a class="item__title" href="{{ .Params.ItemUrl }}">{{ .Title}}</a></span>
-            <span><a class="item_commentme" href="{{ .Permalink }}">[点评]</a></span> 
+            
             
         {{ else }}
             <span class="item__title"><a class="item__title" href="{{ .Permalink }}">{{ .Title}}</a></span>
@@ -28,6 +28,7 @@
             {{ range .Params.tags }}
             <span class="item__tag"><a class="item__tag" href='/tags/{{- replace . " " "-" | urlize -}}'>#{{- . -}}</a></span>
             {{- end }}
+            <span><a class="item_commentme" href="{{ .Permalink }}">[点评]</a></span> 
             {{ partial "age.html" . }}
             <!-- todo: 月份和tag放在右侧 -->
         </div>        

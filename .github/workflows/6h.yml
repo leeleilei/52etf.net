@@ -1,14 +1,14 @@
 # This workflow will install Python dependencies, run tests and lint with a single version of Python
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
 
-name: 更新贵金属ETF持仓
+name: 更新中国GDP
 
 on:
   push:
       branches:
         - master
   schedule:
-    - cron: "*/31 * * * *"
+    - cron: "*/6 * * * *"
   watch:
     types: started      
 
@@ -30,7 +30,13 @@ jobs:
       - name: Main
         run: |
           # stop the build if there are Python syntax errors or undefined names
+          python3 bin/pull_chinagdp.py content/images/
+          python3 bin/pull_chinamoney.py content/images/
+          python3 bin/pull_cn10ybondsh300.py content/images/
+          python3 bin/pull_cn10ybond.py content/images/
+          python3 bin/pull_rongzi.py content/images/
           python3 bin/pull_precious_etf.py content/images/
+          python3 bin/pull_precious_gov.py content/images/
 
       - uses: EndBug/add-and-commit@v4
         with:

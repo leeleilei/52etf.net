@@ -16,11 +16,11 @@ Layout类是界面布局的骨架，这个骨架遵循着一些默认行为规�
 
 也可以使用Pyside-uic来生成py文件后导入使用。
 
-这两种方式没有太多差异，需要注意的是ui稳健加载的QMainWindow是不能放置在其他Widget中的，只能是单独窗口。
+ui文件加载的QMainWindow也可以放置到parent widget内，达到界面GUI加载ui的效果。**这个效果的最重要的是**将界面组件化了，可以单独修改某一部分的界面内容，最后拼装起来。
 
-网上有对默认行为的改写，可以加载到父Widget中。这样的话便可以设计子组件，很方便的组装。
+单独组件也可以配合css设置界面风格，达到更好的管理方式。
 
-参考链接：https://stackoverflow.com/questions/27603350/how-do-i-load-children-from-ui-file-in-pyside
+其他加载参考：https://stackoverflow.com/questions/27603350/how-do-i-load-children-from-ui-file-in-pyside
 
 ## 界面组件的引用
 
